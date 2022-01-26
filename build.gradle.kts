@@ -37,7 +37,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.4.2")
+    //implementation("org.flywaydb:flyway-core:8.4.2")
     runtimeOnly("com.h2database:h2:2.1.210")
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
