@@ -1,0 +1,41 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Java_CI_with_Gradle
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build with Gradle wrapper generating JaCoCo report
+        run: ./gradlew --continue build jacocoTestReport
+
+      - name: Generate JaCoCo badges
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          generate-coverage-badge: false
+          generate-branches-badge: false
+          generate-coverage-endpoint: true
+          generate-branches-endpoint: true
+
+      - name: Commit JaCoCo Badges
+        uses: EndBug/add-and-commit@v8
+        with:
+          add: '*.json'
+          default_author: github_actions
+          message: 'Update JaCoCo badges'
