@@ -32,6 +32,7 @@ jobs:
           generate-branches-badge: false
           generate-coverage-endpoint: true
           generate-branches-endpoint: true
+          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
 
       - name: Commit JaCoCo Badges
         uses: EndBug/add-and-commit@v8
