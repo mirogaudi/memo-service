@@ -25,6 +25,8 @@ Application is a demo of a simple memos (notes) service
 - JUnit Jupiter
 - MockK
 - Springmockk
+- Ktlint
+- Detekt
 - JaCoCo
 - Kover (with IntelliJ coverage engine)
 
@@ -43,7 +45,7 @@ Application is a demo of a simple memos (notes) service
 
 ### Database
 
-- Application DB stores memos with creation and due times
+- Application DB stores simple text memos with creation and due dates
 - DB is initialized with Flyway
     - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql) (initially generated with Spring
       Data JPA, for details see [application.yml](src/main/resources/application.yml))
@@ -61,6 +63,9 @@ See configuration in [application.yml](src/main/resources/application.yml)
 ```shell
 # Build with Gradle wrapper
 $ ./gradlew clean build
+
+# Build with Gradle wrapper continuing on task failures
+$ ./gradlew --continue clean build
 ``` 
 
 ### Docker build
@@ -117,13 +122,21 @@ $ ./gradlew --continue ktlintCheck
 $ ./gradlew ktlintApplyToIdea
 ```
 
+### Static code analysis
+
+```shell
+# Check code with detekt using Gradle wrapper
+$ ./gradlew detekt
+
+```
+
 ### Code coverage
 
 ```shell
-# Test with Gradle wrapper generating JaCoCo code coverage report 
+# Run tests with Gradle wrapper generating JaCoCo code coverage report 
 $ ./gradlew clean jacocoTestReport
 
-# Test with Gradle wrapper generating Kover code coverage report (with IntelliJ coverage engine)
+# Run tests with Gradle wrapper generating Kover code coverage report (with IntelliJ coverage engine)
 $ ./gradlew clean koverReport
 
 ```
@@ -140,11 +153,11 @@ $ ./gradlew dependencyCheckAnalyze
 ### Update dependencies
 
 ```shell
-# Update Gradle wrapper
-$ ./gradlew wrapper --gradle-version <version>
-
 # Check for dependency updates with Gradle wrapper
 $ ./gradlew dependencyUpdates
+
+# Update Gradle wrapper
+$ ./gradlew wrapper --gradle-version <version>
 ```
 
 ### Check Gradle task dependencies
@@ -158,13 +171,13 @@ $ ./gradlew tiOrder build
 ```
 
 ## TODO:
+
+- add V2__insert_data.sql
 - implement classes
-    - Memo entity
     - Memo repo
     - Memo service
     - Memo controller
     - tests
-- generate/add DB scripts
-- use Dependabot 
+- use Dependabot
 - use Micrometer
 - use Spring WebFlux
