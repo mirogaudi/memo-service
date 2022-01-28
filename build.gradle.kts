@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
@@ -10,14 +11,18 @@ plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     kotlin("plugin.jpa") version "1.6.10"
+    kotlin("plugin.allopen") version "1.6.10"
 
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
     id("org.jlleitschuh.gradle.ktlint-idea") version "10.2.1"
+
+    id("io.gitlab.arturbosch.detekt").version("1.19.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.0-RC2"
 
     id("org.owasp.dependencycheck") version "6.5.3"
+
     id("com.github.ben-manes.versions") version "0.41.0"
 
     id("org.barfuin.gradle.taskinfo") version "1.3.1"
@@ -35,13 +40,16 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    // implementation("org.flywaydb:flyway-core:8.4.2")
+    implementation("org.flywaydb:flyway-core:8.4.2")
     runtimeOnly("com.h2database:h2:2.1.210")
 
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.springdoc:springdoc-openapi-ui:1.6.5")
@@ -58,8 +66,17 @@ dependencies {
 springBoot {
     mainClass.set("mirogaudi.memo.MemoServiceApplicationKt")
 }
+
 tasks.jar {
     enabled = false
+}
+
+allOpen {
+    annotations(
+        "javax.persistence.Entity",
+        "javax.persistence.MappedSuperclass",
+        "javax.persistence.Embedabble"
+    )
 }
 
 ktlint {
@@ -73,14 +90,31 @@ ktlint {
     }
 }
 
-tasks.withType<KotlinCompile> {
+detekt {
+    buildUponDefaultConfig = true
+
+    ignoreFailures = true
+}
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+
+    reports {
+        html.required.set(true)
+
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+    }
+}
+
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
-tasks.withType<Test> {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform {
         excludeEngines("junit-vintage")
     }
@@ -99,13 +133,16 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 
     reports {
+        html.required.set(true)
         csv.required.set(true)
     }
 }
 
 kover {
+    // Use for IntelliJ based coverage
     coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
 
+    // Use for JaCoCo based coverage
     // coverageEngine.set(kotlinx.kover.api.CoverageEngine.JACOCO)
     // jacocoEngineVersion.set("0.8.7")
 
@@ -114,8 +151,14 @@ kover {
 tasks.koverHtmlReport {
     isEnabled = true
 }
-tasks.koverXmlReport {
+tasks.koverMergedHtmlReport {
     isEnabled = true
+}
+tasks.koverXmlReport {
+    isEnabled = false
+}
+tasks.koverMergedXmlReport {
+    isEnabled = false
 }
 
 dependencyCheck {
