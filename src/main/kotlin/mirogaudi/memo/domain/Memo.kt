@@ -22,7 +22,8 @@ data class Memo(
     var id: Long? = null,
 
     @Column(nullable = false)
-    var text: @NotNull @Size(min = 3, max = 255) String? = null,
+    @NotNull @Size(min = 3, max = 255)
+    var text: String? = null,
 
     @CreatedDate
     @Column(nullable = false)
