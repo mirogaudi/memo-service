@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+
+    hibernate.ddl-auto: create-drop
+
+    properties:
+      javax.persistence.schema-generation:
+        create-source: metadata
+        scripts:
+          action: create
+          create-target: src/main/resources/db/create_schema.sql

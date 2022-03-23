@@ -49,8 +49,9 @@ Application is a demo of a simple memos (notes) service
 
 - Application DB stores simple text memos with creation and due dates
 - DB is initialized with Flyway
-    - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql) (initially generated with Spring
-      Data JPA, for details see [application.yml](src/main/resources/application.yml))
+    - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql)
+        - initial script `src/main/resources/db/create_schema.sql` is generated with Spring Data JPA when starting
+          application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
     - [V2__insert_data.sql](src/main/resources/db/migration/V2__insert_data.sql)
 - Application uses H2 in-memory DB
 
