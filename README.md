@@ -177,7 +177,7 @@ $ ./gradlew tiOrder build
 
 - setup springdoc + swagger + asciidoctor
 - add Task to Memo
-- add db schema diagramm (plantUML)
+- add db schema diagramm
 - add V2__insert_data.sql
 - implement classes
     - Memo repo

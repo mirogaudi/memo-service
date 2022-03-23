@@ -5,7 +5,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.3"
+    id("org.springframework.boot") version "2.6.4"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
     kotlin("jvm") version "1.6.10"
@@ -19,11 +19,11 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.19.0")
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.5.0-RC2"
+    id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
-    id("org.owasp.dependencycheck") version "6.5.3"
+    id("org.owasp.dependencycheck") version "7.0.1"
 
-    id("com.github.ben-manes.versions") version "0.41.0"
+    id("com.github.ben-manes.versions") version "0.42.0"
 
     id("org.barfuin.gradle.taskinfo") version "1.3.1"
 
@@ -43,7 +43,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.4.2")
+    implementation("org.flywaydb:flyway-core:8.5.4")
     runtimeOnly("com.h2database:h2:2.1.210")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -52,15 +52,16 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.5")
+    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.6")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(module = "mockito-core")
     }
 
-    testImplementation("io.mockk:mockk:1.12.2")
-    testImplementation("com.ninja-squad:springmockk:3.1.0")
+    testImplementation("io.mockk:mockk:1.12.3")
+    testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
 
 springBoot {
@@ -80,7 +81,7 @@ allOpen {
 }
 
 ktlint {
-    version.set("0.43.2")
+    version.set("0.45.1")
 
     ignoreFailures.set(false)
 
