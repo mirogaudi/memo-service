@@ -5,7 +5,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.4"
+    id("org.springframework.boot") version "2.6.5"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
     kotlin("jvm") version "1.6.10"
@@ -21,11 +21,11 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
-    id("org.owasp.dependencycheck") version "7.0.1"
+    id("org.owasp.dependencycheck") version "7.0.3"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 
-    id("org.barfuin.gradle.taskinfo") version "1.3.1"
+    id("org.barfuin.gradle.taskinfo") version "1.4.0"
 
     id("com.palantir.docker") version "0.32.0"
 }
@@ -43,7 +43,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.4")
+    implementation("org.flywaydb:flyway-core:8.5.5")
     runtimeOnly("com.h2database:h2:2.1.210")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
