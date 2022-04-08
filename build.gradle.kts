@@ -5,23 +5,25 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.5"
+    id("org.springframework.boot") version "2.6.6"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
-    kotlin("jvm") version "1.6.10"
-    kotlin("plugin.spring") version "1.6.10"
-    kotlin("plugin.jpa") version "1.6.10"
-    kotlin("plugin.allopen") version "1.6.10"
+    val kotlinVersion = "1.6.20"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
+    kotlin("plugin.jpa") version kotlinVersion
+    kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
-    id("org.jlleitschuh.gradle.ktlint-idea") version "10.2.1"
+    val ktlintVersion = "10.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
+    id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVersion
 
     id("io.gitlab.arturbosch.detekt").version("1.19.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
-    id("org.owasp.dependencycheck") version "7.0.3"
+    id("org.owasp.dependencycheck") version "7.0.4.1"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 
@@ -43,7 +45,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.5")
+    implementation("org.flywaydb:flyway-core:8.5.7")
     runtimeOnly("com.h2database:h2:2.1.210")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -52,8 +54,9 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.springdoc:springdoc-openapi-kotlin:1.6.6")
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.6")
+    val springdocVersion = "1.6.7"
+    implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-kotlin:$springdocVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
@@ -81,7 +84,7 @@ allOpen {
 }
 
 ktlint {
-    version.set("0.45.1")
+    version.set("0.45.2")
 
     ignoreFailures.set(false)
 
