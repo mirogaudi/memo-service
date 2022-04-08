@@ -27,7 +27,7 @@ plugins {
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
 
-    id("com.palantir.docker") version "0.32.0"
+    id("com.palantir.docker") version "0.33.0"
 }
 
 group = "mirogaudi"
