@@ -23,7 +23,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
-    id("org.owasp.dependencycheck") version "7.0.4.1"
+    id("org.owasp.dependencycheck") version "7.1.0.1"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 
