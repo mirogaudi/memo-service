@@ -42,8 +42,8 @@ Application is a demo of a simple memos (notes) service
 
 ### Functionality
 
-- Application implements CRUD operations for memos (notes)
-- Memo service is `@Transactional` to avoid race condition
+- Application implements CRUD operations for memos and labels
+- Memo and label services are `@Transactional` to avoid race condition
 
 ### Database
 
@@ -69,7 +69,7 @@ $ ./gradlew clean build
 
 # Build with Gradle wrapper continuing on task failures
 $ ./gradlew --continue clean build
-``` 
+```
 
 ### Docker build
 
@@ -90,7 +90,7 @@ $ java -jar build/libs/memo-service-1.0.0.jar
 
 # Run with Gradle wrapper
 $ ./gradlew bootRun
-  
+
 # Run with Docker
 $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service:latest
 ```
@@ -121,7 +121,7 @@ $ ./gradlew --continue clean ktlintCheck
 #### Code style
 
 ```shell
-# Apply ktlint Kotlin code style to IntelliJ IDEA project scheme 
+# Apply ktlint Kotlin code style to IntelliJ IDEA project scheme
 $ ./gradlew ktlintApplyToIdea
 ```
 
@@ -136,7 +136,7 @@ $ ./gradlew clean detekt
 ### Code coverage
 
 ```shell
-# Run tests with Gradle wrapper generating JaCoCo code coverage report 
+# Run tests with Gradle wrapper generating JaCoCo code coverage report
 $ ./gradlew clean jacocoTestReport
 
 # Run tests with Gradle wrapper generating Kover code coverage report (with IntelliJ coverage engine)
@@ -169,20 +169,16 @@ $ ./gradlew wrapper --gradle-version <version>
 # Show Gradle build task dependencies tree
 $ ./gradlew tiTree build
 
-# Show Gradle build task dependencies order 
+# Show Gradle build task dependencies order
 $ ./gradlew tiOrder build
 ```
 
 ## TODO:
 
 - setup springdoc + swagger + asciidoctor
-- add Task to Memo
 - add db schema diagramm
-- add V2__insert_data.sql
-- implement classes
-    - Memo repo
-    - Memo service
-    - Memo controller
+- implement for Memo and Label:
+    - repos
+    - services
+    - controllers
     - tests
-- use Micrometer
-- use Spring WebFlux
