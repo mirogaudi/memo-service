@@ -59,6 +59,6 @@ class MemoServiceImpl(val memoRepository: MemoRepository) : MemoService {
 
     private fun memoNotFoundException(id: Long) = NotFoundException("Memo with id='$id' not found")
 
-    // TODO add fun getByLabel
+    // TODO add fun searchByLabel
     // TODO add tests
 }

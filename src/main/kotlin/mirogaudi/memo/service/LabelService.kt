@@ -59,5 +59,3 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
     // TODO add tests
 }
-
-
