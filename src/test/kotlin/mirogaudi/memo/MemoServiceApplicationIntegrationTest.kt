@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
 
 @SpringBootTest
-class MemoServiceApplicationIntegrationTest {
+internal class MemoServiceApplicationIntegrationTest {
 
     @Autowired
     private lateinit var context: ApplicationContext
