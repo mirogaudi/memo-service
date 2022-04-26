@@ -5,10 +5,10 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.6"
+    id("org.springframework.boot") version "2.6.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
-    val kotlinVersion = "1.6.20"
+    val kotlinVersion = "1.6.21"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
@@ -18,12 +18,12 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
     id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVersion
 
-    id("io.gitlab.arturbosch.detekt").version("1.19.0")
+    id("io.gitlab.arturbosch.detekt").version("1.20.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
-    id("org.owasp.dependencycheck") version "7.0.4.1"
+    id("org.owasp.dependencycheck") version "7.1.0.1"
 
     id("com.github.ben-manes.versions") version "0.42.0"
 
@@ -45,8 +45,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.7")
-    runtimeOnly("com.h2database:h2:2.1.210")
+    implementation("org.flywaydb:flyway-core:8.5.9")
+    runtimeOnly("com.h2database:h2:2.1.212")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -54,7 +54,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    val springdocVersion = "1.6.7"
+    val springdocVersion = "1.6.8"
     implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-kotlin:$springdocVersion")
 
