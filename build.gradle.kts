@@ -24,10 +24,11 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.5.0"
 
     id("org.owasp.dependencycheck") version "7.1.0.1"
-
     id("com.github.ben-manes.versions") version "0.42.0"
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
+
+    id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
 
     id("com.palantir.docker") version "0.33.0"
 }
@@ -186,6 +187,12 @@ fun isNonStable(version: String): Boolean {
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
+}
+
+openApi {
+    apiDocsUrl.set("http://localhost:8080/ms/v3/api-docs")
+    outputDir.set(file("$buildDir/docs"))
+    outputFileName.set("memo-service-openapi.json")
 }
 
 docker {

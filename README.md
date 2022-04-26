@@ -22,6 +22,7 @@ Application is a demo of a simple memos (notes) service
 - H2 in-memory DB
 - Docker
 - OpenAPI 3 & Swagger UI (springdoc-openapi)
+- Swagger Codegen
 - JUnit Jupiter
 - MockK
 - Springmockk
@@ -102,6 +103,16 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 - OpenAPI docs: [http://localhost:8080/ms/v3/api-docs](http://localhost:8080/ms/v3/api-docs)
 - Swagger UI: [http://localhost:8080/ms/swagger-ui/index.html](http://localhost:8080/ms/swagger-ui/index.html)
 
+#### Generate API docs in a file
+
+```shell
+# Build with Gradle wrapper generating OpenAPI docs
+$ ./gradlew clean generateOpenApiDocs
+```
+
+Generated API docs file `$buildDir/docs/memo-service-openapi.json` can be viewed
+with [https://editor.swagger.io/](https://editor.swagger.io/)
+
 ### View DB
 
 - H2 console [http://localhost:8080/ms/h2-console](http://localhost:8080/ms/h2-console)
@@ -175,10 +186,9 @@ $ ./gradlew tiOrder build
 
 ## TODO:
 
-- setup springdoc + swagger + asciidoctor
 - add db schema diagramm
 - implement for Memo and Label:
-    - repos
     - services
     - controllers
     - tests
+- add http client calls
