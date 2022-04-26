@@ -18,7 +18,7 @@ interface LabelService {
 class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
     override fun getAll(): List<Label> {
-        return labelRepository.findAll()
+        return labelRepository.findAll().sortedBy { it.id }
     }
 
     override fun getById(id: Long): Label {
