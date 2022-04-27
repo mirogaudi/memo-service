@@ -31,9 +31,9 @@ data class Label(
     // Non-owning side of bidirectional relation
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "labels")
     @JsonIgnore
-    var memos: MutableSet<Memo> = mutableSetOf(),
+    var memos: MutableSet<Memo> = mutableSetOf()
 
-    ) {
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false

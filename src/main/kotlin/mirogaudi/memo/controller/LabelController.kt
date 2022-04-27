@@ -28,29 +28,35 @@ class LabelController(val labelService: LabelService) {
 
     @GetMapping(value = ["/{id}"])
     fun getById(
-        @Parameter(description = "Label ID") @PathVariable id: Long
+        @Parameter(description = "Label ID")
+        @PathVariable id: Long
     ): Label {
         return labelService.getById(id)
     }
 
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(
-        @Parameter(description = "Label ID") @PathVariable id: Long
+        @Parameter(description = "Label ID")
+        @PathVariable id: Long
     ) {
         labelService.deleteById(id)
     }
 
     @PostMapping
     fun create(
-        @Parameter(description = "Label") @Valid @RequestBody label: Label
+        @Parameter(description = "Label")
+        @RequestBody @Valid label: Label
     ): Label {
         return labelService.create(label)
     }
 
     @PutMapping(value = ["/{id}"])
     fun update(
-        @Parameter(description = "Label ID") @PathVariable id: Long,
-        @Parameter(description = "Label") @Valid @RequestBody label: Label
+        @Parameter(description = "Label ID")
+        @PathVariable id: Long,
+
+        @Parameter(description = "Label")
+        @RequestBody @Valid label: Label
     ): Label {
         return labelService.update(id, label)
     }

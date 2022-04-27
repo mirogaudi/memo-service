@@ -32,6 +32,12 @@ data class Memo(
     @field:Size(min = 3, max = 1024)
     var text: String,
 
+    @Column(nullable = false)
+    var createdDate: LocalDateTime? = null,
+
+    @Column(nullable = true)
+    var dueDate: LocalDateTime? = null,
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "memo_label",
@@ -39,18 +45,13 @@ data class Memo(
         inverseJoinColumns = [JoinColumn(name = "label_id", referencedColumnName = "id")]
     )
     @JsonIgnore
-    var labels: MutableSet<Label> = mutableSetOf(),
-
-    @Column(nullable = false)
-    var createdDate: LocalDateTime? = null,
-
-    @Column(nullable = true)
-    var dueDate: LocalDateTime? = null
+    var labels: MutableSet<Label> = mutableSetOf()
 
 ) {
     @JsonGetter
     fun labelNames(): List<String> {
-        return labels.map { it.name }.sorted()
+        return labels.map { it.name }
+            .sorted()
     }
 
     override fun equals(other: Any?): Boolean {

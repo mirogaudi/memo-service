@@ -37,7 +37,11 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
     }
 
     override fun create(label: Label): Label {
-        return labelRepository.save(label)
+        return labelRepository.save(
+            Label(
+                name = label.name
+            )
+        )
     }
 
     override fun update(id: Long, label: Label): Label {
@@ -58,5 +62,7 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
     private fun labelNotFoundException(id: Long) = NotFoundException("Label with id='$id' not found")
 
+    // TODO add fun getByName(name: String): Optional<Label>
+    // TODO add fun searchByName(name: String): List<Label>
     // TODO add tests
 }
