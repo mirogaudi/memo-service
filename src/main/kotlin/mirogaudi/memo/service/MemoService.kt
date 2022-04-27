@@ -4,21 +4,26 @@ import mirogaudi.memo.domain.Memo
 import mirogaudi.memo.repository.MemoRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDateTime
 
 interface MemoService {
     fun getAll(): List<Memo>
     fun getById(id: Long): Memo
     fun deleteById(id: Long)
-    fun create(memo: Memo): Memo
-    fun update(id: Long, memo: Memo): Memo
+    fun create(text: String, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
+    fun update(id: Long, text: String, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
 }
 
 @Service
 @Transactional
-class MemoServiceImpl(val memoRepository: MemoRepository) : MemoService {
+class MemoServiceImpl(
+    val memoRepository: MemoRepository,
+    val labelService: LabelService
+) : MemoService {
 
     override fun getAll(): List<Memo> {
         return memoRepository.findAll()
+            .sortedBy { it.id }
     }
 
     override fun getById(id: Long): Memo {
@@ -35,19 +40,36 @@ class MemoServiceImpl(val memoRepository: MemoRepository) : MemoService {
         }
     }
 
-    override fun create(memo: Memo): Memo {
-        return memoRepository.save(memo)
+    override fun create(
+        text: String,
+        dueDate: LocalDateTime?,
+        labelIds: Set<Long>
+    ): Memo {
+        return memoRepository.save(
+            Memo(
+                text = text,
+                createdDate = LocalDateTime.now(),
+                dueDate = dueDate,
+                labels = labelIds.map { labelService.getById(it) }.toMutableSet()
+            )
+        )
     }
 
-    override fun update(id: Long, memo: Memo): Memo {
+    override fun update(
+        id: Long,
+        text: String,
+        dueDate: LocalDateTime?,
+        labelIds: Set<Long>
+    ): Memo {
         return when {
             memoRepository.existsById(id) -> {
                 memoRepository.save(
                     Memo(
-                        id = memo.id,
-                        text = memo.text,
-                        labels = memo.labels,
-                        dueDate = memo.dueDate
+                        id = id,
+                        text = text,
+                        createdDate = getById(id).createdDate,
+                        dueDate = dueDate,
+                        labels = labelIds.map { labelService.getById(it) }.toMutableSet()
                     )
                 )
             }
@@ -59,6 +81,7 @@ class MemoServiceImpl(val memoRepository: MemoRepository) : MemoService {
 
     private fun memoNotFoundException(id: Long) = NotFoundException("Memo with id='$id' not found")
 
-    // TODO add fun searchByLabel
+    // TODO in create and update use label names, create not existing labels
+    // TODO add fun searchByLabel(label: String): List<Memo>
     // TODO add tests
 }

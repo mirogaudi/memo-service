@@ -4,12 +4,17 @@ import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
 import mirogaudi.memo.domain.Memo
 import mirogaudi.memo.service.MemoService
+import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/v1/memos")
@@ -38,6 +43,36 @@ class MemoController(val memoService: MemoService) {
         memoService.deleteById(id)
     }
 
-    // TODO add missing code
+    @PostMapping
+    fun create(
+        @Parameter(description = "Memo text")
+        @RequestParam text: String,
+
+        @Parameter(description = "Memo due date")
+        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
+
+        @Parameter(description = "Memo labels IDs")
+        @RequestParam labelIds: Set<Long>
+    ): Memo {
+        return memoService.create(text, dueDate, labelIds)
+    }
+
+    @PutMapping(value = ["/{id}"])
+    fun update(
+        @Parameter(description = "Memo ID")
+        @PathVariable id: Long,
+
+        @Parameter(description = "Memo text")
+        @RequestParam text: String,
+
+        @Parameter(description = "Memo due date")
+        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
+
+        @Parameter(description = "Memo labels IDs")
+        @RequestParam labelIds: Set<Long>
+    ): Memo {
+        return memoService.update(id, text, dueDate, labelIds)
+    }
+
     // TODO add tests
 }
