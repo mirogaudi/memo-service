@@ -76,11 +76,12 @@ tasks.jar {
     enabled = false
 }
 
+// Needed when using data classes for entities
 allOpen {
     annotations(
         "javax.persistence.Entity",
-        "javax.persistence.MappedSuperclass",
-        "javax.persistence.Embedabble"
+        "javax.persistence.Embedabble",
+        "javax.persistence.MappedSuperclass"
     )
 }
 
