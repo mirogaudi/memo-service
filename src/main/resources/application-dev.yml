@@ -10,4 +10,7 @@ spring:
         create-source: metadata
         scripts:
           action: create
-          create-target: src/main/resources/db/create_schema.sql
+          create-target: build/resources/main/db/create_schema.sql
+      hibernate:
+        format_sql: true
+        show_sql: true

@@ -8,7 +8,6 @@ spring:
   jpa:
     generate-ddl: false
     open-in-view: false
-
     hibernate.ddl-auto: validate
 
   datasource:
@@ -27,3 +26,4 @@ springdoc.swagger-ui:
 
 # Memo service (ms)
 # ms:
+#   memo.duration

@@ -9,4 +9,3 @@ build/
 out/
 
 /.sdkmanrc
-/src/main/resources/db/create_schema.sql
