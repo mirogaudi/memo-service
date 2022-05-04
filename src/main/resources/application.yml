@@ -25,5 +25,5 @@ springdoc.swagger-ui:
   operations-sorter: alpha
 
 # Memo service (ms)
-# ms:
-#   memo.duration
+ms:
+  memo.priority: SHORT_TERM
