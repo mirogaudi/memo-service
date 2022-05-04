@@ -44,7 +44,7 @@ repositories {
 
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
-    // Hibernate metamodel generator
+    // hibernate metamodel generator
     kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -81,7 +81,7 @@ tasks.jar {
     enabled = false
 }
 
-// Needed when using data classes for entities
+// needed when using data classes for entities
 allOpen {
     annotations(
         "javax.persistence.Entity",
@@ -150,10 +150,10 @@ tasks.jacocoTestReport {
 }
 
 kover {
-    // Use for IntelliJ based coverage
+    // use for IntelliJ based coverage
     coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
 
-    // Use for JaCoCo based coverage
+    // use for JaCoCo based coverage
     // coverageEngine.set(kotlinx.kover.api.CoverageEngine.JACOCO)
     // jacocoEngineVersion.set("0.8.7")
 
