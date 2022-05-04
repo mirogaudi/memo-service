@@ -44,7 +44,7 @@ data class Label(
     }
 
     // Use name since it is unique
-    override fun hashCode(): Int = Objects.hash(name);
+    override fun hashCode(): Int = Objects.hash(name)
 
     @Override
     override fun toString(): String {

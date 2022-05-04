@@ -3,6 +3,7 @@ package mirogaudi.memo.controller
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
 import mirogaudi.memo.domain.Memo
+import mirogaudi.memo.domain.Priority
 import mirogaudi.memo.service.MemoService
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.validation.annotation.Validated
@@ -48,13 +49,16 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo text")
         @RequestParam text: String,
 
+        @Parameter(description = "Memo priority")
+        @RequestParam(required = false) priority: Priority?,
+
         @Parameter(description = "Memo due date")
         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
 
         @Parameter(description = "Memo labels IDs")
-        @RequestParam labelIds: Set<Long>
+        @RequestParam labelIds: Set<Long>?
     ): Memo {
-        return memoService.create(text, dueDate, labelIds)
+        return memoService.create(text, priority, dueDate, labelIds ?: mutableSetOf())
     }
 
     @PutMapping(value = ["/{id}"])
@@ -65,13 +69,16 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo text")
         @RequestParam text: String,
 
+        @Parameter(description = "Memo priority")
+        @RequestParam(required = false) priority: Priority?,
+
         @Parameter(description = "Memo due date")
         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
 
         @Parameter(description = "Memo labels IDs")
-        @RequestParam labelIds: Set<Long>
+        @RequestParam labelIds: Set<Long>?
     ): Memo {
-        return memoService.update(id, text, dueDate, labelIds)
+        return memoService.update(id, text, priority, dueDate, labelIds ?: mutableSetOf())
     }
 
     // TODO add tests

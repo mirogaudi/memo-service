@@ -1,6 +1,8 @@
 package mirogaudi.memo.service
 
+import mirogaudi.memo.config.MemoServiceProperties
 import mirogaudi.memo.domain.Memo
+import mirogaudi.memo.domain.Priority
 import mirogaudi.memo.repository.MemoRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -10,13 +12,14 @@ interface MemoService {
     fun getAll(): List<Memo>
     fun getById(id: Long): Memo
     fun deleteById(id: Long)
-    fun create(text: String, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
-    fun update(id: Long, text: String, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
+    fun create(text: String, priority: Priority?, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
+    fun update(id: Long, text: String, priority: Priority?, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
 }
 
 @Service
 @Transactional
 class MemoServiceImpl(
+    val memoServiceProperties: MemoServiceProperties,
     val memoRepository: MemoRepository,
     val labelService: LabelService
 ) : MemoService {
@@ -42,12 +45,14 @@ class MemoServiceImpl(
 
     override fun create(
         text: String,
+        priority: Priority?,
         dueDate: LocalDateTime?,
         labelIds: Set<Long>
     ): Memo {
         return memoRepository.save(
             Memo(
                 text = text,
+                priority = priority ?: memoServiceProperties.memoPriority ?: Priority.LONG_TERM,
                 createdDate = LocalDateTime.now(),
                 dueDate = dueDate,
                 labels = labelIds.map { labelService.getById(it) }.toMutableSet()
@@ -58,6 +63,7 @@ class MemoServiceImpl(
     override fun update(
         id: Long,
         text: String,
+        priority: Priority?,
         dueDate: LocalDateTime?,
         labelIds: Set<Long>
     ): Memo {
@@ -67,6 +73,7 @@ class MemoServiceImpl(
                     Memo(
                         id = id,
                         text = text,
+                        priority = priority,
                         createdDate = getById(id).createdDate,
                         dueDate = dueDate,
                         labels = labelIds.map { labelService.getById(it) }.toMutableSet()

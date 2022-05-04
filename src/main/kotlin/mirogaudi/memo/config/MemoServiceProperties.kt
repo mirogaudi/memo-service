@@ -5,5 +5,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "ms")
 class MemoServiceProperties {
-    var priority: Priority? = null
+    var memoPriority: Priority? = null
 }

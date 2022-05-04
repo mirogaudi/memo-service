@@ -6,6 +6,8 @@ import org.hibernate.Hibernate
 import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -31,6 +33,10 @@ data class Memo(
     @field:NotEmpty
     @field:Size(min = 3, max = 1024)
     var text: String,
+
+    @Column(name = "priority")
+    @Enumerated(EnumType.STRING)
+    var priority: Priority? = null,
 
     @Column(name = "created_date", nullable = false)
     var createdDate: LocalDateTime? = null,
@@ -66,6 +72,13 @@ data class Memo(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , text = $text , createdDate = $createdDate , dueDate = $dueDate )"
+        return this::class.simpleName +
+            "(id = $id , text = $text , priority = $priority , createdDate = $createdDate , dueDate = $dueDate )"
     }
+}
+
+enum class Priority {
+    LONG_TERM,
+    MID_TERM,
+    SHORT_TERM
 }

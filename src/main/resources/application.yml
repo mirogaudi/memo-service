@@ -26,4 +26,4 @@ springdoc.swagger-ui:
 
 # Memo service (ms)
 ms:
-  memo.priority: SHORT_TERM
+  memo-priority: SHORT_TERM
