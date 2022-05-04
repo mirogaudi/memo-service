@@ -10,6 +10,7 @@ plugins {
 
     val kotlinVersion = "1.6.21"
     kotlin("jvm") version kotlinVersion
+    kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
@@ -42,11 +43,15 @@ repositories {
 }
 
 dependencies {
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+    // Hibernate metamodel generator
+    kapt("org.hibernate:hibernate-jpamodelgen")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.9")
+    implementation("org.flywaydb:flyway-core:8.5.10")
     runtimeOnly("com.h2database:h2:2.1.212")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
