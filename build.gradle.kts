@@ -5,7 +5,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.7"
+    id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
     val kotlinVersion = "1.6.21"
@@ -15,14 +15,14 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    val ktlintVersion = "10.2.1"
+    val ktlintVersion = "10.3.0"
     id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
     id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVersion
 
     id("io.gitlab.arturbosch.detekt").version("1.20.0")
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.5.0"
+    id("org.jetbrains.kotlinx.kover") version "0.5.1"
 
     id("org.owasp.dependencycheck") version "7.1.0.1"
     id("com.github.ben-manes.versions") version "0.42.0"
@@ -45,13 +45,13 @@ repositories {
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     // hibernate metamodel generator
-    kapt("org.hibernate:hibernate-jpamodelgen")
+    kapt("org.hibernate:hibernate-jpamodelgen:6.0.1.Final")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.10")
+    implementation("org.flywaydb:flyway-core:8.5.11")
     runtimeOnly("com.h2database:h2:2.1.212")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -69,7 +69,7 @@ dependencies {
         exclude(module = "mockito-core")
     }
 
-    testImplementation("io.mockk:mockk:1.12.3")
+    testImplementation("io.mockk:mockk:1.12.4")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
 
