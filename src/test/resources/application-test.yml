@@ -1,0 +1,27 @@
+spring:
+  jpa:
+    generate-ddl: false
+    open-in-view: false
+
+    hibernate.ddl-auto: validate
+
+  flyway:
+    locations: classpath:db/migration
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:ms-test
+    username: sa
+    password: # empty
+
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 0
+
+logging:
+  level:
+    root: info
+
+# Memo service (ms)
+ms:
+  memo-priority: SHORT_TERM
