@@ -45,7 +45,7 @@ repositories {
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     // hibernate metamodel generator
-    kapt("org.hibernate:hibernate-jpamodelgen:6.0.1.Final")
+    kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")

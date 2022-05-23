@@ -49,10 +49,10 @@ class ControllerErrorHandler {
     ): ResponseEntity<Error> {
         return ResponseEntity.status(status).body(
             Error(
-                LocalDateTime.now(),
-                status.value(),
-                status.reasonPhrase,
-                t.toString()
+                timestamp = LocalDateTime.now(),
+                status = status.value(),
+                error = status.reasonPhrase,
+                cause = t.toString()
             )
         )
     }
