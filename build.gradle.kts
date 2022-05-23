@@ -5,7 +5,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.6.7"
+    id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
     val kotlinVersion = "1.6.21"
