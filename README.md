@@ -192,7 +192,6 @@ $ ./gradlew tiOrder build
 
 ## TODO:
 
-- add db schema diagramm
 - implement for Memo and Label:
     - services
     - controllers
