@@ -1,9 +1,11 @@
 spring:
   jpa:
     generate-ddl: false
-    open-in-view: false
-
     hibernate.ddl-auto: validate
+
+    # anti-pattern: enabled in demo purposes to allow lazy fetching during json mapping
+    # on prod: disable it and use DTOs
+    open-in-view: true
 
   flyway:
     locations: classpath:db/migration

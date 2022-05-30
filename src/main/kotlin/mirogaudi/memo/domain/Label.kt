@@ -30,7 +30,7 @@ data class Label(
     var name: String,
 
     // non-owning side of bidirectional relation
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "labels")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "labels")
     @JsonIgnore
     var memos: MutableSet<Memo> = mutableSetOf()
 

@@ -19,7 +19,7 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
     override fun getAll(): List<Label> {
         return labelRepository.findAll()
-            .sortedBy { it.id }
+            .sortedBy { it.name }
     }
 
     override fun getById(id: Long): Label {
@@ -62,7 +62,5 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
     private fun labelNotFoundException(id: Long) = NotFoundException("Label with id='$id' not found")
 
-    // TODO add fun getByName(name: String): Optional<Label>
-    // TODO add fun searchByName(name: String): List<Label>
     // TODO add tests
 }

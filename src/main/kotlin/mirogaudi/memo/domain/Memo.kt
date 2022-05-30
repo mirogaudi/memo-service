@@ -41,10 +41,10 @@ data class Memo(
     @Column(name = "created_date", nullable = false)
     var createdDate: LocalDateTime? = null,
 
-    @Column(name = "due_date", nullable = true)
+    @Column(name = "due_date")
     var dueDate: LocalDateTime? = null,
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "memo_label",
         joinColumns = [JoinColumn(name = "memo_id", referencedColumnName = "id")],

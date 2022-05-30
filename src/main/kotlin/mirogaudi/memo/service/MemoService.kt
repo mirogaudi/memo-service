@@ -88,7 +88,5 @@ class MemoServiceImpl(
 
     private fun memoNotFoundException(id: Long) = NotFoundException("Memo with id='$id' not found")
 
-    // TODO in create and update use label names, create not existing labels
-    // TODO add fun searchByLabel(label: String): List<Memo>
     // TODO add tests
 }
