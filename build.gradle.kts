@@ -31,7 +31,7 @@ plugins {
 
     id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
 
-    id("com.palantir.docker") version "0.33.0"
+    id("com.palantir.docker") version "0.34.0"
 }
 
 group = "mirogaudi"
