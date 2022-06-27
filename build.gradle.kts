@@ -5,10 +5,10 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.7.0"
+    id("org.springframework.boot") version "2.7.1"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 
-    val kotlinVersion = "1.6.21"
+    val kotlinVersion = "1.7.0"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -24,14 +24,14 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.1"
 
-    id("org.owasp.dependencycheck") version "7.1.0.1"
+    id("org.owasp.dependencycheck") version "7.1.1"
     id("com.github.ben-manes.versions") version "0.42.0"
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
 
-    id("com.palantir.docker") version "0.33.0"
+    id("com.palantir.docker") version "0.34.0"
 }
 
 group = "mirogaudi"
@@ -45,14 +45,14 @@ repositories {
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     // hibernate metamodel generator
-    kapt("org.hibernate:hibernate-jpamodelgen")
+    // kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:8.5.11")
-    runtimeOnly("com.h2database:h2:2.1.212")
+    implementation("org.flywaydb:flyway-core:8.5.13")
+    runtimeOnly("com.h2database:h2:2.1.214")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
