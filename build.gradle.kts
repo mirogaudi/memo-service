@@ -6,9 +6,9 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "2.7.1"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("io.spring.dependency-management") version "1.0.12.RELEASE"
 
-    val kotlinVersion = "1.7.0"
+    val kotlinVersion = "1.7.10"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -19,7 +19,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
     id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVersion
 
-    id("io.gitlab.arturbosch.detekt").version("1.20.0")
+    id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.1"
@@ -91,6 +91,7 @@ allOpen {
 }
 
 ktlint {
+    // TODO update to 0.46.1 as soon as supported
     version.set("0.45.2")
 
     ignoreFailures.set(false)
