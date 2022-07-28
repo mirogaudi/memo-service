@@ -7,8 +7,7 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      # For all packages, ignore all patch updates
       - dependency-name: "*"
-        update-types: [ "version-update:semver-patch" ]
+        update-types: [ "version-update:semver-major" ]
     open-pull-requests-limit: 10
     rebase-strategy: "disabled"
