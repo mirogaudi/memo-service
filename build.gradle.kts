@@ -5,7 +5,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.7.1"
+    id("org.springframework.boot") version "2.7.2"
     id("io.spring.dependency-management") version "1.0.12.RELEASE"
 
     val kotlinVersion = "1.7.10"
@@ -51,6 +51,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // TODO update to 9.x as soon as supported by Spring Boot
     implementation("org.flywaydb:flyway-core:8.5.13")
     runtimeOnly("com.h2database:h2:2.1.214")
 
@@ -69,7 +70,7 @@ dependencies {
         exclude(module = "mockito-core")
     }
 
-    testImplementation("io.mockk:mockk:1.12.4")
+    testImplementation("io.mockk:mockk:1.12.5")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
 
@@ -91,7 +92,7 @@ allOpen {
 }
 
 ktlint {
-    // TODO update to 0.46.1 as soon as supported
+    // TODO update to 0.46.x as soon as supported by org.jlleitschuh.gradle.ktlint
     version.set("0.45.2")
 
     ignoreFailures.set(false)
