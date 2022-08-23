@@ -22,7 +22,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.5.1"
+    id("org.jetbrains.kotlinx.kover") version "0.6.0"
 
     id("org.owasp.dependencycheck") version "7.1.1"
     id("com.github.ben-manes.versions") version "0.42.0"
