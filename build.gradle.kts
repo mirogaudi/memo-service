@@ -15,9 +15,9 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    val ktlintVersion = "10.3.0"
-    id("org.jlleitschuh.gradle.ktlint") version ktlintVersion
-    id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVersion
+    val ktlintGradleVersion = "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
+    id("org.jlleitschuh.gradle.ktlint-idea") version ktlintGradleVersion
 
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
