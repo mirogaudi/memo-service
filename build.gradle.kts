@@ -17,6 +17,7 @@ plugins {
 
     val ktlintGradleVersion = "11.0.0"
     id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
+    // TODO remove it and fix README as soon as ktlint updated to 0.47.x
     id("org.jlleitschuh.gradle.ktlint-idea") version ktlintGradleVersion
 
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
@@ -91,7 +92,7 @@ allOpen {
 }
 
 ktlint {
-    // TODO update to 0.46.x as soon as supported by org.jlleitschuh.gradle.ktlint
+    // TODO update to 0.47.x as soon as supported by org.jlleitschuh.gradle.ktlint
     version.set("0.45.2")
 
     ignoreFailures.set(false)
