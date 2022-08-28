@@ -6,7 +6,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "2.7.3"
-    id("io.spring.dependency-management") version "1.0.12.RELEASE"
+    id("io.spring.dependency-management") version "1.0.13.RELEASE"
 
     val kotlinVersion = "1.7.10"
     kotlin("jvm") version kotlinVersion
@@ -29,7 +29,7 @@ plugins {
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
 
-    id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
+    id("org.springdoc.openapi-gradle-plugin") version "1.4.0"
 
     id("com.palantir.docker") version "0.34.0"
 }
