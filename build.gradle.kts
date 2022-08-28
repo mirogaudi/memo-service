@@ -24,7 +24,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.5.1"
 
-    id("org.owasp.dependencycheck") version "7.1.1"
+    id("org.owasp.dependencycheck") version "7.1.2"
     id("com.github.ben-manes.versions") version "0.42.0"
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
