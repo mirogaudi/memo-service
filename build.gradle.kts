@@ -29,7 +29,7 @@ plugins {
 
     id("org.barfuin.gradle.taskinfo") version "1.4.0"
 
-    id("org.springdoc.openapi-gradle-plugin") version "1.3.4"
+    id("org.springdoc.openapi-gradle-plugin") version "1.4.0"
 
     id("com.palantir.docker") version "0.34.0"
 }
