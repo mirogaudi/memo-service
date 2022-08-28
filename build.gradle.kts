@@ -1,4 +1,5 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import kotlinx.kover.api.DefaultIntellijEngine
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
@@ -23,7 +24,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.5.1"
+    id("org.jetbrains.kotlinx.kover") version "0.6.0"
 
     id("org.owasp.dependencycheck") version "7.1.2"
     id("com.github.ben-manes.versions") version "0.42.0"
@@ -146,32 +147,22 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 
     reports {
+        xml.required.set(true)
         html.required.set(true)
-        csv.required.set(true)
     }
 }
 
 kover {
-    // use for IntelliJ based coverage
-    coverageEngine.set(kotlinx.kover.api.CoverageEngine.INTELLIJ)
+    // use IntelliJ or JaCoCo coverage engine
+    engine.set(DefaultIntellijEngine)
+    // engine.set(DefaultJacocoEngine)
 
-    // use for JaCoCo based coverage
-    // coverageEngine.set(kotlinx.kover.api.CoverageEngine.JACOCO)
-    // jacocoEngineVersion.set("0.8.8")
-
-    generateReportOnCheck = false
-}
-tasks.koverHtmlReport {
-    isEnabled = true
-}
-tasks.koverMergedHtmlReport {
-    isEnabled = true
-}
-tasks.koverXmlReport {
-    isEnabled = false
-}
-tasks.koverMergedXmlReport {
-    isEnabled = false
+    xmlReport {
+        onCheck.set(false)
+    }
+    htmlReport {
+        onCheck.set(false)
+    }
 }
 
 dependencyCheck {
