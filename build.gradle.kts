@@ -139,7 +139,7 @@ tasks.withType<Test>().configureEach {
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.8"
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
@@ -156,7 +156,7 @@ kover {
 
     // use for JaCoCo based coverage
     // coverageEngine.set(kotlinx.kover.api.CoverageEngine.JACOCO)
-    // jacocoEngineVersion.set("0.8.7")
+    // jacocoEngineVersion.set("0.8.8")
 
     generateReportOnCheck = false
 }
