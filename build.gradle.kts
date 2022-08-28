@@ -51,8 +51,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    // TODO update to 9.x as soon as supported by Spring Boot
-    implementation("org.flywaydb:flyway-core:8.5.13")
+    implementation("org.flywaydb:flyway-core:9.2.0")
     runtimeOnly("com.h2database:h2:2.1.214")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -61,7 +60,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    val springdocVersion = "1.6.9"
+    val springdocVersion = "1.6.11"
     implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-kotlin:$springdocVersion")
 
