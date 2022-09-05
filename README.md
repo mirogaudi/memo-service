@@ -147,7 +147,7 @@ $ ./gradlew ktlintApplyToIdea
 ### Static code analysis
 
 ```shell
-# Check code with detekt using Gradle wrapper
+# Check code with Detekt using Gradle wrapper
 $ ./gradlew clean detekt
 
 ```
@@ -158,7 +158,7 @@ $ ./gradlew clean detekt
 # Run tests with Gradle wrapper generating JaCoCo code coverage report
 $ ./gradlew clean jacocoTestReport
 
-# Run tests with Gradle wrapper generating Kover code coverage report (with IntelliJ coverage engine)
+# Run tests with Gradle wrapper generating Kover (IntelliJ) code coverage report
 $ ./gradlew clean koverReport
 
 ```
