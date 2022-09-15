@@ -22,18 +22,18 @@ class SwaggerConfig {
                     .contact(
                         Contact()
                             .email("mirogaudi@ya.ru")
-                            .url("https://github.com/mirogaudi")
+                            .url("https://github.com/mirogaudi"),
                     )
                     .license(
                         License()
                             .name("Apache-2.0")
-                            .url("https://www.apache.org/licenses/LICENSE-2.0.html")
-                    )
+                            .url("https://www.apache.org/licenses/LICENSE-2.0.html"),
+                    ),
             )
             .externalDocs(
                 ExternalDocumentation()
                     .description("Source code on GitHub")
-                    .url("https://github.com/mirogaudi/memo-service")
+                    .url("https://github.com/mirogaudi/memo-service"),
             )
     }
 }

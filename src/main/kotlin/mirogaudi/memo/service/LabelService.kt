@@ -32,6 +32,7 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
             labelRepository.existsById(id) -> {
                 labelRepository.deleteById(id)
             }
+
             else -> throw labelNotFoundException(id)
         }
     }
@@ -39,8 +40,8 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
     override fun create(label: Label): Label {
         return labelRepository.save(
             Label(
-                name = label.name
-            )
+                name = label.name,
+            ),
         )
     }
 
@@ -50,10 +51,11 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
                 labelRepository.save(
                     Label(
                         id = id,
-                        name = label.name
-                    )
+                        name = label.name,
+                    ),
                 )
             }
+
             else -> {
                 throw labelNotFoundException(id)
             }

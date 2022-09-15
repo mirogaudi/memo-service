@@ -2,6 +2,7 @@ package mirogaudi.memo.controller
 
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
+import java.time.LocalDateTime
 import mirogaudi.memo.domain.Memo
 import mirogaudi.memo.domain.Priority
 import mirogaudi.memo.service.MemoService
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/v1/memos")
@@ -31,7 +31,8 @@ class MemoController(val memoService: MemoService) {
     @GetMapping(value = ["/{id}"])
     fun getById(
         @Parameter(description = "Memo ID")
-        @PathVariable id: Long
+        @PathVariable
+        id: Long,
     ): Memo {
         return memoService.getById(id)
     }
@@ -39,7 +40,8 @@ class MemoController(val memoService: MemoService) {
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(
         @Parameter(description = "Memo ID")
-        @PathVariable id: Long
+        @PathVariable
+        id: Long,
     ) {
         memoService.deleteById(id)
     }
@@ -47,16 +49,21 @@ class MemoController(val memoService: MemoService) {
     @PostMapping
     fun create(
         @Parameter(description = "Memo text")
-        @RequestParam text: String,
+        @RequestParam
+        text: String,
 
         @Parameter(description = "Memo priority")
-        @RequestParam(required = false) priority: Priority?,
+        @RequestParam(required = false)
+        priority: Priority?,
 
         @Parameter(description = "Memo due date")
-        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
+        @RequestParam(required = false)
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        dueDate: LocalDateTime?,
 
         @Parameter(description = "Memo labels IDs")
-        @RequestParam labelIds: Set<Long>?
+        @RequestParam
+        labelIds: Set<Long>?,
     ): Memo {
         return memoService.create(text, priority, dueDate, labelIds ?: mutableSetOf())
     }
@@ -64,19 +71,25 @@ class MemoController(val memoService: MemoService) {
     @PutMapping(value = ["/{id}"])
     fun update(
         @Parameter(description = "Memo ID")
-        @PathVariable id: Long,
+        @PathVariable
+        id: Long,
 
         @Parameter(description = "Memo text")
-        @RequestParam text: String,
+        @RequestParam
+        text: String,
 
         @Parameter(description = "Memo priority")
-        @RequestParam(required = false) priority: Priority?,
+        @RequestParam(required = false)
+        priority: Priority?,
 
         @Parameter(description = "Memo due date")
-        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) dueDate: LocalDateTime?,
+        @RequestParam(required = false)
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        dueDate: LocalDateTime?,
 
         @Parameter(description = "Memo labels IDs")
-        @RequestParam labelIds: Set<Long>?
+        @RequestParam
+        labelIds: Set<Long>?,
     ): Memo {
         return memoService.update(id, text, priority, dueDate, labelIds ?: mutableSetOf())
     }

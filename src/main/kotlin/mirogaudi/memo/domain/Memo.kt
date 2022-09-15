@@ -2,7 +2,6 @@ package mirogaudi.memo.domain
 
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnore
-import org.hibernate.Hibernate
 import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -18,6 +17,7 @@ import javax.persistence.ManyToMany
 import javax.persistence.Table
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.Size
+import org.hibernate.Hibernate
 
 @Entity
 @Table(name = "memo")
@@ -48,11 +48,10 @@ data class Memo(
     @JoinTable(
         name = "memo_label",
         joinColumns = [JoinColumn(name = "memo_id", referencedColumnName = "id")],
-        inverseJoinColumns = [JoinColumn(name = "label_id", referencedColumnName = "id")]
+        inverseJoinColumns = [JoinColumn(name = "label_id", referencedColumnName = "id")],
     )
     @JsonIgnore
-    var labels: MutableSet<Label> = mutableSetOf()
-
+    var labels: MutableSet<Label> = mutableSetOf(),
 ) {
     @JsonGetter
     fun labelNames(): List<String> {
@@ -80,5 +79,5 @@ data class Memo(
 enum class Priority {
     LONG_TERM,
     MID_TERM,
-    SHORT_TERM
+    SHORT_TERM,
 }

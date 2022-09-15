@@ -2,6 +2,7 @@ package mirogaudi.memo.controller
 
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
+import javax.validation.Valid
 import mirogaudi.memo.domain.Label
 import mirogaudi.memo.service.LabelService
 import org.springframework.validation.annotation.Validated
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/v1/labels")
@@ -29,7 +29,8 @@ class LabelController(val labelService: LabelService) {
     @GetMapping(value = ["/{id}"])
     fun getById(
         @Parameter(description = "Label ID")
-        @PathVariable id: Long
+        @PathVariable
+        id: Long,
     ): Label {
         return labelService.getById(id)
     }
@@ -37,7 +38,8 @@ class LabelController(val labelService: LabelService) {
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(
         @Parameter(description = "Label ID")
-        @PathVariable id: Long
+        @PathVariable
+        id: Long,
     ) {
         labelService.deleteById(id)
     }
@@ -45,7 +47,9 @@ class LabelController(val labelService: LabelService) {
     @PostMapping
     fun create(
         @Parameter(description = "Label")
-        @RequestBody @Valid label: Label
+        @RequestBody
+        @Valid
+        label: Label,
     ): Label {
         return labelService.create(label)
     }
@@ -53,10 +57,13 @@ class LabelController(val labelService: LabelService) {
     @PutMapping(value = ["/{id}"])
     fun update(
         @Parameter(description = "Label ID")
-        @PathVariable id: Long,
+        @PathVariable
+        id: Long,
 
         @Parameter(description = "Label")
-        @RequestBody @Valid label: Label
+        @RequestBody
+        @Valid
+        label: Label,
     ): Label {
         return labelService.update(id, label)
     }

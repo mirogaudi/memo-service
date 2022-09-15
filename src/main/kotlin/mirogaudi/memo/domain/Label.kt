@@ -1,7 +1,6 @@
 package mirogaudi.memo.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import org.hibernate.Hibernate
 import java.util.Objects
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -13,6 +12,7 @@ import javax.persistence.ManyToMany
 import javax.persistence.Table
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.Size
+import org.hibernate.Hibernate
 
 @Entity
 @Table(name = "label")
@@ -32,8 +32,7 @@ data class Label(
     // non-owning side of bidirectional relation
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "labels")
     @JsonIgnore
-    var memos: MutableSet<Memo> = mutableSetOf()
-
+    var memos: MutableSet<Memo> = mutableSetOf(),
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
