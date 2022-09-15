@@ -26,10 +26,10 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.0"
 
-    id("org.owasp.dependencycheck") version "7.1.2"
+    id("org.owasp.dependencycheck") version "7.2.0"
     id("com.github.ben-manes.versions") version "0.42.0"
 
-    id("org.barfuin.gradle.taskinfo") version "1.4.0"
+    id("org.barfuin.gradle.taskinfo") version "2.0.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.4.0"
 
@@ -71,7 +71,7 @@ dependencies {
         exclude(module = "mockito-core")
     }
 
-    testImplementation("io.mockk:mockk:1.12.7")
+    testImplementation("io.mockk:mockk:1.12.8")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
 
