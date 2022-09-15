@@ -2,7 +2,6 @@ import io.gitlab.arturbosch.detekt.Detekt
 import kotlinx.kover.api.DefaultIntellijEngine
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
@@ -16,10 +15,7 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    val ktlintGradleVersion = "11.0.0"
-    id("org.jlleitschuh.gradle.ktlint") version ktlintGradleVersion
-    // TODO remove it and fix README as soon as ktlint updated to 0.47.x
-    id("org.jlleitschuh.gradle.ktlint-idea") version ktlintGradleVersion
+    id("org.jmailen.kotlinter") version "3.12.0"
 
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
@@ -88,20 +84,14 @@ allOpen {
     annotations(
         "javax.persistence.Entity",
         "javax.persistence.Embedabble",
-        "javax.persistence.MappedSuperclass"
+        "javax.persistence.MappedSuperclass",
     )
 }
 
-ktlint {
-    // TODO update to 0.47.x as soon as supported by org.jlleitschuh.gradle.ktlint
-    version.set("0.45.2")
+kotlinter {
+    ignoreFailures = false
 
-    ignoreFailures.set(false)
-
-    reporters {
-        reporter(ReporterType.HTML)
-        reporter(ReporterType.JSON)
-    }
+    reporters = arrayOf("html", "json")
 }
 
 detekt {
@@ -170,7 +160,7 @@ dependencyCheck {
     analyzers(
         closureOf<AnalyzerExtension> {
             assemblyEnabled = false
-        }
+        },
     )
 }
 
