@@ -58,8 +58,8 @@ Application DB stores labeled text memos:
 DB migration is done with Flyway using scripts:
 
 - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql)
-    - initial script `build/resources/main/db/create_schema.sql` is generated with Spring Data JPA when starting
-      application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
+  - initial script `build/resources/main/db/create_schema.sql` is generated with Spring Data JPA when starting
+    application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
 - [V2__insert_data.sql](src/main/resources/db/migration/V2__insert_data.sql)
 
 Application uses H2 in-memory DB
@@ -87,7 +87,7 @@ $ ./gradlew --continue clean build
 $ docker build -t mirogaudi/memo-service:1.0.0 .
 $ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
 
-# Build docker image with Gradle wrapper
+# Build docker image using Docker Gradle plugin
 $ ./gradlew clean docker dockerTagLatest
 ```
 
@@ -114,7 +114,7 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 #### Generate API docs in a file
 
 ```shell
-# Build with Gradle wrapper generating OpenAPI docs
+# Build generating OpenAPI docs using springdoc-openapi Gradle plugin 
 $ ./gradlew clean generateOpenApiDocs
 ```
 
@@ -124,43 +124,39 @@ with [https://editor.swagger.io/](https://editor.swagger.io/)
 ### View DB
 
 - H2 console [http://localhost:8080/ms/h2-console](http://localhost:8080/ms/h2-console)
-    - url: `jdbc:h2:mem:ms`
-    - username: `sa`
-    - password: `<empty>`
+  - url: `jdbc:h2:mem:ms`
+  - username: `sa`
+  - password: `<empty>`
 
 ## Code quality
+
+### Code style
+
+Code style is set using [.editorconfig](.editorconfig) file (based on
+Ktlint [.editorconfig](https://github.com/pinterest/ktlint/blob/master/.editorconfig) file)
 
 ### Linter
 
 ```shell
-# Lint with ktlint using Gradle wrapper
-$ ./gradlew --continue clean ktlintCheck
-```
-
-#### Code style
-
-```shell
-# Apply ktlint Kotlin code style to IntelliJ IDEA project scheme
-$ ./gradlew ktlintApplyToIdea
+# Lint with Ktlint using Kotlinter Gradle plugin (check is also dependent on lintKotlin)
+$ ./gradlew clean lintKotlin
 ```
 
 ### Static code analysis
 
 ```shell
-# Check code with Detekt using Gradle wrapper
+# Check code using Detekt Gradle plugin (check is also dependent on detekt)
 $ ./gradlew clean detekt
-
 ```
 
 ### Code coverage
 
 ```shell
-# Run tests with Gradle wrapper generating JaCoCo code coverage report
+# Run tests generating JaCoCo code coverage report using JaCoCo Gradle plugin
 $ ./gradlew clean jacocoTestReport
 
-# Run tests with Gradle wrapper generating Kover (IntelliJ) code coverage report
+# Run tests generating Kover code coverage report using Kover Gradle plugin
 $ ./gradlew clean koverReport
-
 ```
 
 ### Dependencies vulnerabilities
@@ -168,7 +164,7 @@ $ ./gradlew clean koverReport
 #### OWASP
 
 ```shell
-# Generate OWASP dependency vulnerability report with Gradle wrapper
+# Generate OWASP dependency vulnerability report using OWASP Gradle plugin
 $ ./gradlew dependencyCheckAnalyze
 ```
 
@@ -177,7 +173,7 @@ $ ./gradlew dependencyCheckAnalyze
 ### Update dependencies
 
 ```shell
-# Check for dependency updates with Gradle wrapper
+# Check for dependency updates using Versions Gradle plugin
 $ ./gradlew dependencyUpdates
 
 # Update Gradle wrapper
@@ -187,17 +183,17 @@ $ ./gradlew wrapper --gradle-version <version>
 ### Check Gradle task dependencies
 
 ```shell
-# Show Gradle build task dependencies tree
+# Show Gradle build task dependencies tree using taskinfo Gradle plugin
 $ ./gradlew tiTree build
 
-# Show Gradle build task dependencies order
+# Show Gradle build task dependencies order using taskinfo Gradle plugin
 $ ./gradlew tiOrder build
 ```
 
 ## TODO:
 
 - implement for Memo and Label:
-    - services
-    - controllers
-    - tests
+  - services
+  - controllers
+  - tests
 - add http client calls
