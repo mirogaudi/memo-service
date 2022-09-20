@@ -22,7 +22,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.0"
 
-    id("org.owasp.dependencycheck") version "7.2.0"
+    id("org.owasp.dependencycheck") version "7.2.1"
     id("com.github.ben-manes.versions") version "0.42.0"
 
     id("org.barfuin.gradle.taskinfo") version "2.0.0"
@@ -49,7 +49,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.3.0")
+    implementation("org.flywaydb:flyway-core:9.3.1")
     runtimeOnly("com.h2database:h2:2.1.214")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
