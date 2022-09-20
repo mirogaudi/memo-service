@@ -2,7 +2,6 @@ package mirogaudi.memo.controller
 
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
-import java.time.LocalDateTime
 import mirogaudi.memo.domain.Memo
 import mirogaudi.memo.domain.Priority
 import mirogaudi.memo.service.MemoService
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/v1/memos")
@@ -32,7 +32,7 @@ class MemoController(val memoService: MemoService) {
     fun getById(
         @Parameter(description = "Memo ID")
         @PathVariable
-        id: Long,
+        id: Long
     ): Memo {
         return memoService.getById(id)
     }
@@ -41,7 +41,7 @@ class MemoController(val memoService: MemoService) {
     fun deleteById(
         @Parameter(description = "Memo ID")
         @PathVariable
-        id: Long,
+        id: Long
     ) {
         memoService.deleteById(id)
     }
@@ -63,7 +63,7 @@ class MemoController(val memoService: MemoService) {
 
         @Parameter(description = "Memo labels IDs")
         @RequestParam
-        labelIds: Set<Long>?,
+        labelIds: Set<Long>?
     ): Memo {
         return memoService.create(text, priority, dueDate, labelIds ?: mutableSetOf())
     }
@@ -89,7 +89,7 @@ class MemoController(val memoService: MemoService) {
 
         @Parameter(description = "Memo labels IDs")
         @RequestParam
-        labelIds: Set<Long>?,
+        labelIds: Set<Long>?
     ): Memo {
         return memoService.update(id, text, priority, dueDate, labelIds ?: mutableSetOf())
     }
