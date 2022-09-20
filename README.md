@@ -132,7 +132,7 @@ with [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ### Code style
 
-Code style is set using [.editorconfig](.editorconfig) file (based on
+Code style is set using [.editorconfig](.editorconfig) file (refers to
 Ktlint [.editorconfig](https://github.com/pinterest/ktlint/blob/master/.editorconfig) file)
 
 ### Linter
