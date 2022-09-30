@@ -67,7 +67,7 @@ dependencies {
         exclude(module = "mockito-core")
     }
 
-    testImplementation("io.mockk:mockk:1.13.1")
+    testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
 
