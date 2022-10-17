@@ -23,7 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
     id("org.owasp.dependencycheck") version "7.2.1"
-    id("com.github.ben-manes.versions") version "0.42.0"
+    id("com.github.ben-manes.versions") version "0.43.0"
 
     id("org.barfuin.gradle.taskinfo") version "2.0.0"
 
