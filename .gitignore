@@ -1,6 +1,3 @@
-.gradle
-build/
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -8,4 +5,9 @@ build/
 *.ipr
 out/
 
+### Gradle ###
+.gradle
+build/
+
+### Other ###
 /.sdkmanrc
