@@ -6,7 +6,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "2.7.4"
-    id("io.spring.dependency-management") version "1.0.14.RELEASE"
+    id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.7.20"
     kotlin("jvm") version kotlinVersion
@@ -23,7 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
     id("org.owasp.dependencycheck") version "7.2.1"
-    id("com.github.ben-manes.versions") version "0.42.0"
+    id("com.github.ben-manes.versions") version "0.43.0"
 
     id("org.barfuin.gradle.taskinfo") version "2.0.0"
 
@@ -58,7 +58,7 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    val springdocVersion = "1.6.11"
+    val springdocVersion = "1.6.12"
     implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-kotlin:$springdocVersion")
 
