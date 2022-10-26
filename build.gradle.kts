@@ -1,6 +1,7 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import kotlinx.kover.api.DefaultIntellijEngine
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
@@ -16,7 +17,6 @@ plugins {
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "3.12.0"
-
     id("io.gitlab.arturbosch.detekt").version("1.21.0")
 
     jacoco
@@ -25,11 +25,10 @@ plugins {
     id("org.owasp.dependencycheck") version "7.3.0"
     id("com.github.ben-manes.versions") version "0.43.0"
 
-    id("org.barfuin.gradle.taskinfo") version "2.0.0"
-
     id("org.springdoc.openapi-gradle-plugin") version "1.4.0"
-
     id("com.palantir.docker") version "0.34.0"
+
+    id("org.barfuin.gradle.taskinfo") version "2.0.0"
 }
 
 group = "mirogaudi"
@@ -42,7 +41,7 @@ repositories {
 
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
-    // hibernate metamodel generator
+    // uncomment to enable hibernate metamodel generator
     // kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -77,6 +76,10 @@ springBoot {
 
 tasks.jar {
     enabled = false
+}
+
+tasks.withType<KaptWithoutKotlincTask>().configureEach {
+    kaptProcessJvmArgs.add("-Xmx256m")
 }
 
 // needed when using data classes for entities
@@ -128,6 +131,8 @@ tasks.withType<Test>().configureEach {
         showExceptions = true
         showStackTraces = false
     }
+
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
 }
 
 jacoco {

@@ -74,10 +74,13 @@ See configuration in [application.yml](src/main/resources/application.yml)
 
 ```shell
 # Build with Gradle wrapper
-$ ./gradlew clean build
+$ ./gradlew build
 
 # Build with Gradle wrapper continuing on task failures
-$ ./gradlew --continue clean build
+$ ./gradlew --continue build
+
+# Build with Gradle wrapper deleting the build directory 
+$ ./gradlew clean build
 ```
 
 ### Docker build
@@ -88,7 +91,7 @@ $ docker build -t mirogaudi/memo-service:1.0.0 .
 $ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
 
 # Build docker image using Docker Gradle plugin
-$ ./gradlew clean docker dockerTagLatest
+$ ./gradlew docker dockerTagLatest
 ```
 
 ### Run
@@ -115,7 +118,7 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 
 ```shell
 # Build generating OpenAPI docs using springdoc-openapi Gradle plugin 
-$ ./gradlew clean generateOpenApiDocs
+$ ./gradlew generateOpenApiDocs
 ```
 
 Generated API docs file `$buildDir/docs/memo-service-openapi.json` can be viewed
@@ -139,24 +142,24 @@ Ktlint [.editorconfig](https://github.com/pinterest/ktlint/blob/master/.editorco
 
 ```shell
 # Lint with Ktlint using Kotlinter Gradle plugin (check is also dependent on lintKotlin)
-$ ./gradlew clean lintKotlin
+$ ./gradlew lintKotlin
 ```
 
 ### Static code analysis
 
 ```shell
 # Check code using Detekt Gradle plugin (check is also dependent on detekt)
-$ ./gradlew clean detekt
+$ ./gradlew detekt
 ```
 
 ### Code coverage
 
 ```shell
 # Run tests generating JaCoCo code coverage report using JaCoCo Gradle plugin
-$ ./gradlew clean jacocoTestReport
+$ ./gradlew jacocoTestReport
 
 # Run tests generating Kover code coverage report using Kover Gradle plugin
-$ ./gradlew clean koverReport
+$ ./gradlew koverReport
 ```
 
 ### Dependencies vulnerabilities
