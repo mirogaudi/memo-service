@@ -49,7 +49,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.5.1")
+    implementation("org.flywaydb:flyway-core:9.6.0")
     runtimeOnly("com.h2database:h2:2.1.214")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
