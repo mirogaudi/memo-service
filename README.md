@@ -1,6 +1,4 @@
-[//]: # (TODO remove mirrow as soon as tokei fixed)
-[//]: # (![Lines of code]&#40;https://img.shields.io/tokei/lines/github/mirogaudi/memo-service&#41;)
-![Lines of code](https://tokei.ekzhang.com/b1/github/mirogaudi/memo-service)
+![Lines of code](https://img.shields.io/tokei/lines/github/mirogaudi/memo-service)
 ![GitHub top language](https://img.shields.io/github/languages/top/mirogaudi/memo-service)
 ![GitHub gradle workflow status](https://img.shields.io/github/workflow/status/mirogaudi/memo-service/Java_CI_with_Gradle)
 ![JaCoCo coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/mirogaudi/memo-service/main/.github/badges/jacoco.json)
