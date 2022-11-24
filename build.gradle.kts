@@ -17,7 +17,7 @@ plugins {
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "3.12.0"
-    id("io.gitlab.arturbosch.detekt").version("1.21.0")
+    id("io.gitlab.arturbosch.detekt").version("1.22.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
