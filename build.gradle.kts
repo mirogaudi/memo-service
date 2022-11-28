@@ -28,7 +28,8 @@ plugins {
     id("org.springdoc.openapi-gradle-plugin") version "1.5.0"
     id("com.palantir.docker") version "0.34.0"
 
-    id("org.barfuin.gradle.taskinfo") version "2.0.0"
+    // TODO uncomment as soon as it supports gradle 7.6
+    // id("org.barfuin.gradle.taskinfo") version "2.0.0"
 }
 
 group = "mirogaudi"
