@@ -67,6 +67,8 @@ dependencies {
         exclude(module = "mockito-core")
     }
 
+    testImplementation(kotlin("test"))
+
     testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("com.ninja-squad:springmockk:3.1.1")
 }
@@ -123,6 +125,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 tasks.withType<Test>().configureEach {
+    // enables JUnit5
     useJUnitPlatform {
         excludeEngines("junit-vintage")
     }
