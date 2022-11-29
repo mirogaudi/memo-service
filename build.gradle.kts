@@ -9,7 +9,7 @@ plugins {
     id("org.springframework.boot") version "2.7.6"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.7.21"
+    val kotlinVersion = "1.7.22"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -69,7 +69,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("io.mockk:mockk:1.13.2")
+    testImplementation("io.mockk:mockk:1.13.3")
     testImplementation("com.ninja-squad:springmockk:3.1.2")
 }
 
