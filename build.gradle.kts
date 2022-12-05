@@ -69,7 +69,7 @@ dependencies {
     testImplementation(kotlin("test"))
 
     testImplementation("io.mockk:mockk:1.13.3")
-    testImplementation("com.ninja-squad:springmockk:3.1.2")
+    testImplementation("com.ninja-squad:springmockk:4.0.0")
 }
 
 springBoot {
