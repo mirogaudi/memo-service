@@ -45,18 +45,17 @@ dependencies {
     // uncomment to enable hibernate metamodel generator
     // kapt("org.hibernate:hibernate-jpamodelgen")
 
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core:9.8.3")
     runtimeOnly("com.h2database:h2:2.1.214")
-
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     val springdocVersion = "1.6.13"
     implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
