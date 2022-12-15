@@ -25,7 +25,7 @@ plugins {
     id("org.owasp.dependencycheck") version "7.4.1"
     id("com.github.ben-manes.versions") version "0.44.0"
 
-    id("org.springdoc.openapi-gradle-plugin") version "1.5.0"
+    id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
     id("com.palantir.docker") version "0.34.0"
 
     // TODO uncomment as soon as it supports gradle 7.6
