@@ -57,7 +57,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:9.10.1")
     runtimeOnly("com.h2database:h2:2.1.214")
 
-    val springdocVersion = "1.6.13"
+    val springdocVersion = "1.6.14"
     implementation("org.springdoc:springdoc-openapi-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-kotlin:$springdocVersion")
 
