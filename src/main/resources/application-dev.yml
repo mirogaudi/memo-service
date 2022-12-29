@@ -6,7 +6,7 @@ spring:
     hibernate.ddl-auto: create-drop
 
     properties:
-      javax.persistence.schema-generation:
+      jakarta.persistence.schema-generation:
         create-source: metadata
         scripts:
           action: create

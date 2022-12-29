@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "2.7.6"
+    id("org.springframework.boot") version "3.0.1"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.7.22"
@@ -86,9 +86,9 @@ tasks.withType<KaptWithoutKotlincTask>().configureEach {
 // needed when using data classes for entities
 allOpen {
     annotations(
-        "javax.persistence.Entity",
-        "javax.persistence.Embedabble",
-        "javax.persistence.MappedSuperclass",
+        "jakarta.persistence.Entity",
+        "jakarta.persistence.Embedabble",
+        "jakarta.persistence.MappedSuperclass",
     )
 }
 
