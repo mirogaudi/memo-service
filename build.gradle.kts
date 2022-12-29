@@ -9,7 +9,7 @@ plugins {
     id("org.springframework.boot") version "3.0.1"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.7.22"
+    val kotlinVersion = "1.8.0"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -45,7 +45,7 @@ dependencies {
     // kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
@@ -77,6 +77,10 @@ springBoot {
 
 tasks.jar {
     enabled = false
+}
+
+kotlin {
+    kotlinDaemonJvmArgs = listOf("-Xmx486m", "-Xms256m", "-XX:+UseParallelGC")
 }
 
 tasks.withType<KaptWithoutKotlincTask>().configureEach {
