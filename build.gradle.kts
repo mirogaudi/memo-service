@@ -22,14 +22,13 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
-    id("org.owasp.dependencycheck") version "7.4.1"
+    id("org.owasp.dependencycheck") version "7.4.3"
     id("com.github.ben-manes.versions") version "0.44.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
     id("com.palantir.docker") version "0.34.0"
 
-    // TODO uncomment as soon as it supports gradle 7.6
-    // id("org.barfuin.gradle.taskinfo") version "2.0.0"
+    id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
 group = "mirogaudi"
@@ -54,7 +53,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.10.1")
+    implementation("org.flywaydb:flyway-core:9.10.2")
     runtimeOnly("com.h2database:h2:2.1.214")
 
     val springdocVersion = "1.6.14"
