@@ -1,6 +1,7 @@
 package mirogaudi.memo.controller
 
 import com.fasterxml.jackson.annotation.JsonFormat
+import jakarta.validation.ConstraintViolationException
 import mirogaudi.memo.service.NotFoundException
 import org.springframework.dao.ConcurrencyFailureException
 import org.springframework.dao.DataIntegrityViolationException
@@ -10,7 +11,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
-import jakarta.validation.ConstraintViolationException
 import java.time.LocalDateTime
 
 @ControllerAdvice

@@ -1,7 +1,6 @@
 package mirogaudi.memo.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import org.hibernate.Hibernate
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -12,6 +11,7 @@ import jakarta.persistence.ManyToMany
 import jakarta.persistence.Table
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.Size
+import org.hibernate.Hibernate
 import java.util.Objects
 
 @Entity
