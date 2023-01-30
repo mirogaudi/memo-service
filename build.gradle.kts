@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "3.0.1"
+    id("org.springframework.boot") version "3.0.2"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.0"
@@ -22,7 +22,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
-    id("org.owasp.dependencycheck") version "8.0.1"
+    id("org.owasp.dependencycheck") version "8.0.2"
     id("com.github.ben-manes.versions") version "0.44.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
@@ -67,7 +67,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("io.mockk:mockk:1.13.3")
+    testImplementation("io.mockk:mockk:1.13.4")
     testImplementation("com.ninja-squad:springmockk:4.0.0")
 }
 
