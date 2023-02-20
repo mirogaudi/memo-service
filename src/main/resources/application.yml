@@ -35,9 +35,13 @@ logging:
   level:
     root: info
 
-springdoc.swagger-ui:
-  tags-sorter: alpha
-  operations-sorter: alpha
+springdoc:
+  enable-native-support: true
+  show-actuator: true
+  swagger-ui:
+    display-request-duration: true
+    operations-sorter: alpha
+    tags-sorter: alpha
 
 # Memo service (ms)
 ms:
