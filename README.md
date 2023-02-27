@@ -56,8 +56,8 @@ Application DB stores labeled text memos:
 DB migration is done with Flyway using scripts:
 
 - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql)
-  - initial script `build/resources/main/db/create_schema.sql` is generated with Spring Data JPA when starting
-    application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
+    - initial script `build/resources/main/db/create_schema.sql` is generated with Spring Data JPA when starting
+      application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
 - [V2__insert_data.sql](src/main/resources/db/migration/V2__insert_data.sql)
 
 Application uses H2 in-memory DB
@@ -115,7 +115,7 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 #### Generate API docs in a file
 
 ```shell
-# Build generating OpenAPI docs using springdoc-openapi Gradle plugin 
+# Build generating OpenAPI docs using springdoc-openapi Gradle plugin
 $ ./gradlew generateOpenApiDocs
 ```
 
@@ -125,9 +125,9 @@ with [https://editor.swagger.io/](https://editor.swagger.io/)
 ### View DB
 
 - H2 console [http://localhost:8080/ms/h2-console](http://localhost:8080/ms/h2-console)
-  - url: `jdbc:h2:mem:ms`
-  - username: `sa`
-  - password: `<empty>`
+    - url: `jdbc:h2:mem:ms`
+    - username: `sa`
+    - password: `<empty>`
 
 ## Code quality
 
@@ -184,17 +184,20 @@ $ ./gradlew wrapper --gradle-version <version>
 ### Check Gradle task dependencies
 
 ```shell
-# Show Gradle build task dependencies tree using taskinfo Gradle plugin
-$ ./gradlew tiTree build
+# Show Gradle 'build' task dependencies order using Gradle wrapper dry run
+$ ./gradlew build --dry-run
 
-# Show Gradle build task dependencies order using taskinfo Gradle plugin
+# Show Gradle 'build' task dependencies order using Gradle wrapper (via taskinfo plugin)
 $ ./gradlew tiOrder build
+
+# Show Gradle 'build' task dependencies tree using Gradle wrapper (via taskinfo plugin)
+$ ./gradlew tiTree build
 ```
 
 ## TODO:
 
 - implement for Memo and Label:
-  - services
-  - controllers
-  - tests
+    - services
+    - controllers
+    - tests
 - add http client calls

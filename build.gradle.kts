@@ -23,7 +23,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
-    id("org.owasp.dependencycheck") version "8.1.0"
+    id("org.owasp.dependencycheck") version "8.1.1"
     id("com.github.ben-manes.versions") version "0.46.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
@@ -74,6 +74,10 @@ dependencies {
 
 springBoot {
     mainClass.set("mirogaudi.memo.MemoServiceApplicationKt")
+}
+
+tasks.resolveMainClassName {
+    mustRunAfter(tasks.inspectClassesForKotlinIC)
 }
 
 tasks.jar {
