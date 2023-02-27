@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "3.0.2"
+    id("org.springframework.boot") version "3.0.3"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.10"
@@ -23,7 +23,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
     id("org.owasp.dependencycheck") version "8.1.0"
-    id("com.github.ben-manes.versions") version "0.45.0"
+    id("com.github.ben-manes.versions") version "0.46.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
     id("com.palantir.docker") version "0.34.0"
@@ -54,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.15.0")
+    implementation("org.flywaydb:flyway-core:9.15.1")
     runtimeOnly("com.h2database:h2:2.1.214")
 
     val springdocVersion = "2.0.2"
