@@ -98,7 +98,7 @@ $ ./gradlew docker dockerTagLatest
 # Run with Java
 $ java -jar build/libs/memo-service-1.0.0.jar
 
-# Run with Gradle wrapper
+# Run with Gradle wrapper (via Spring Boot plugin)
 $ ./gradlew bootRun
 
 # Run with Docker
