@@ -88,15 +88,15 @@ $ ./gradlew clean build
 $ docker build -t mirogaudi/memo-service:1.0.0 .
 $ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
 
-# Build docker image using Docker Gradle plugin
-$ ./gradlew docker dockerTagLatest
+# Build docker image with Gradle wrapper (via Docker plugin)
+$ ./gradlew dockerBuildImage
 ```
 
 ### Run
 
 ```shell
 # Run with Java
-$ java -jar build/libs/memo-service-1.0.0.jar
+$ java -jar build/libs/memo-service-*.jar
 
 # Run with Gradle wrapper (via Spring Boot plugin)
 $ ./gradlew bootRun

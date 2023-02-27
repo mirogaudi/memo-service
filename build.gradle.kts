@@ -1,3 +1,4 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
 import kotlinx.kover.api.DefaultIntellijEngine
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -26,8 +27,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.46.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
-    id("com.palantir.docker") version "0.34.0"
-
+    id("com.bmuschko.docker-remote-api") version "9.2.1"
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
@@ -197,12 +197,11 @@ openApi {
     outputFileName.set("memo-service-openapi.json")
 }
 
-docker {
-    val imageName = "${project.group}/${project.name}"
-    name = "$imageName:$version"
-    tag("Latest", "$imageName:latest")
+tasks.register<DockerBuildImage>("dockerBuildImage") {
+    dependsOn(tasks.bootJar)
 
-    val bootJarTask = tasks.bootJar.get()
-    files(bootJarTask.archiveFile)
-    buildArgs(mapOf("JAR_FILE" to bootJarTask.archiveFileName.get()))
+    inputDir.set(file("${project.projectDir}"))
+
+    val imageName = "${project.group}/${project.name}"
+    images.set(setOf("$imageName:$version", "$imageName:latest"))
 }
