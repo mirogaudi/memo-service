@@ -5,9 +5,10 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
+import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.0.3"
+    id("org.springframework.boot") version "3.0.4"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.10"
@@ -54,10 +55,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.15.1")
-    runtimeOnly("com.h2database:h2:2.1.214")
+    implementation("org.flywaydb:flyway-core:9.15.2")
+    runtimeOnly("com.h2database:h2")
 
-    val springdocVersion = "2.0.2"
+    val springdocVersion = "2.0.3"
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-starter-common:$springdocVersion")
 
@@ -69,7 +70,7 @@ dependencies {
     testImplementation(kotlin("test"))
 
     testImplementation("io.mockk:mockk:1.13.4")
-    testImplementation("com.ninja-squad:springmockk:4.0.0")
+    testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
 springBoot {
@@ -189,7 +190,7 @@ tasks.dependencyUpdates {
     outputFormatter = "html,json"
 }
 fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase(Locale.getDefault()).contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
