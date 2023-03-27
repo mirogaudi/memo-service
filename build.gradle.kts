@@ -8,7 +8,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.0.4"
+    id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.10"
@@ -18,17 +18,17 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jmailen.kotlinter") version "3.13.0"
+    id("org.jmailen.kotlinter") version "3.14.0"
     id("io.gitlab.arturbosch.detekt").version("1.22.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
 
-    id("org.owasp.dependencycheck") version "8.1.2"
+    id("org.owasp.dependencycheck") version "8.2.1"
     id("com.github.ben-manes.versions") version "0.46.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
-    id("com.bmuschko.docker-remote-api") version "9.2.1"
+    id("com.bmuschko.docker-remote-api") version "9.3.0"
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
@@ -55,10 +55,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.15.2")
+    implementation("org.flywaydb:flyway-core:9.16.1")
     runtimeOnly("com.h2database:h2")
 
-    val springdocVersion = "2.0.3"
+    val springdocVersion = "2.0.4"
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-starter-common:$springdocVersion")
 
@@ -104,13 +104,11 @@ allOpen {
 
 kotlinter {
     ignoreFailures = false
-
     reporters = arrayOf("html", "json")
 }
 
 detekt {
     buildUponDefaultConfig = true
-
     ignoreFailures = true
 }
 tasks.withType<Detekt>().configureEach {
