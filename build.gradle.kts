@@ -11,7 +11,7 @@ plugins {
     id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.8.10"
+    val kotlinVersion = "1.8.20"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -58,7 +58,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:9.16.1")
     runtimeOnly("com.h2database:h2")
 
-    val springdocVersion = "2.0.4"
+    val springdocVersion = "2.1.0"
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
     implementation("org.springdoc:springdoc-openapi-starter-common:$springdocVersion")
 
@@ -75,10 +75,6 @@ dependencies {
 
 springBoot {
     mainClass.set("mirogaudi.memo.MemoServiceApplicationKt")
-}
-
-tasks.resolveMainClassName {
-    mustRunAfter(tasks.inspectClassesForKotlinIC)
 }
 
 tasks.jar {
