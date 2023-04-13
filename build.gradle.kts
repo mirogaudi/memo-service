@@ -28,7 +28,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.46.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
-    id("com.bmuschko.docker-remote-api") version "9.3.0"
+    id("com.bmuschko.docker-remote-api") version "9.3.1"
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
@@ -55,7 +55,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.16.1")
+    implementation("org.flywaydb:flyway-core:9.16.3")
     runtimeOnly("com.h2database:h2")
 
     val springdocVersion = "2.1.0"
@@ -69,7 +69,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("io.mockk:mockk:1.13.4")
+    testImplementation("io.mockk:mockk:1.13.5")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
