@@ -8,7 +8,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.0.5"
+    id("org.springframework.boot") version "3.0.6"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.20"
@@ -64,7 +64,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-        exclude(module = "mockito-core")
+        exclude(group = "org.mockito", module = "mockito-core")
     }
 
     testImplementation(kotlin("test"))
