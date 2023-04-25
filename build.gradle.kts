@@ -93,7 +93,7 @@ tasks.withType<KaptWithoutKotlincTask>().configureEach {
 allOpen {
     annotations(
         "jakarta.persistence.Entity",
-        "jakarta.persistence.Embedabble",
+        "jakarta.persistence.Embeddable",
         "jakarta.persistence.MappedSuperclass",
     )
 }
