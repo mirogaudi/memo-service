@@ -55,7 +55,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.16.3")
+    implementation("org.flywaydb:flyway-core:9.17.0")
     runtimeOnly("com.h2database:h2")
 
     val springdocVersion = "2.1.0"
