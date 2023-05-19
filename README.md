@@ -156,8 +156,8 @@ $ ./gradlew detekt
 # Run tests generating JaCoCo code coverage report using JaCoCo Gradle plugin
 $ ./gradlew jacocoTestReport
 
-# Run tests generating Kover code coverage report using Kover Gradle plugin
-$ ./gradlew koverReport
+# Run tests generating Kover code coverage HTML report using Kover Gradle plugin
+$ ./gradlew koverHtmlReport
 ```
 
 ### Dependencies vulnerabilities

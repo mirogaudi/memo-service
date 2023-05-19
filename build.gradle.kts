@@ -1,6 +1,5 @@
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
-import kotlinx.kover.api.DefaultIntellijEngine
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -8,7 +7,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.0.6"
+    id("org.springframework.boot") version "3.1.0"
     id("io.spring.dependency-management") version "1.1.0"
 
     val kotlinVersion = "1.8.21"
@@ -22,7 +21,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.22.0")
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.6.1"
+    id("org.jetbrains.kotlinx.kover") version "0.7.0"
 
     id("org.owasp.dependencycheck") version "8.2.1"
     id("com.github.ben-manes.versions") version "0.46.0"
@@ -55,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.17.0")
+    implementation("org.flywaydb:flyway-core:9.18.0")
     runtimeOnly("com.h2database:h2")
 
     val springdocVersion = "2.1.0"
@@ -154,18 +153,10 @@ tasks.jacocoTestReport {
     }
 }
 
-kover {
-    // use IntelliJ or JaCoCo coverage engine
-    engine.set(DefaultIntellijEngine)
-    // engine.set(DefaultJacocoEngine)
-
-    xmlReport {
-        onCheck.set(false)
-    }
-    htmlReport {
-        onCheck.set(false)
-    }
-}
+// Uncomment to use JaCoCo in Kover
+/*kover {
+    useJacoco()
+}*/
 
 dependencyCheck {
     analyzers(
