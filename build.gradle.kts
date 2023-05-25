@@ -18,7 +18,7 @@ plugins {
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "3.14.0"
-    id("io.gitlab.arturbosch.detekt").version("1.22.0")
+    id("io.gitlab.arturbosch.detekt").version("1.23.0")
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.7.0"
@@ -54,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.18.0")
+    implementation("org.flywaydb:flyway-core:9.19.1")
     runtimeOnly("com.h2database:h2")
 
     val springdocVersion = "2.1.0"
