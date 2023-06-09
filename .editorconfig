@@ -16,24 +16,23 @@ indent_size = 2
 [*.java]
 ij_java_imports_layout = *,|,javax.**,java.**,|,$*
 
-# do not work, should be set in IntelliJ manually:
-#   Editor -> Code style -> Java -> Imports
-#       Class count to use import with '*': 999
-#       Names count to use static import with '*': 999
 ij_java_class_count_to_use_import_on_demand = 999
 ij_java_names_count_to_use_import_on_demand = 999
+ij_java_packages_to_use_import_on_demand = unset
 
 [*.{kt,kts}]
 ij_kotlin_imports_layout = *,javax.**,java.**,kotlin.**,^
-ij_kotlin_allow_trailing_comma = false
-ij_kotlin_allow_trailing_comma_on_call_site = false
 
-# do not work, should be set in IntelliJ manually:
-#   Editor -> Code style -> Kotlin -> Imports
-#       Top-Level Symbols -> Use single name import
-#       Java Statics and Enum Members -> Use single name import
 ij_kotlin_name_count_to_use_star_import = 999
 ij_kotlin_name_count_to_use_star_import_for_members = 999
+ij_kotlin_packages_to_use_import_on_demand = unset
+
+ij_java_class_count_to_use_import_on_demand = 999
+ij_java_names_count_to_use_import_on_demand = 999
+ij_java_packages_to_use_import_on_demand = unset
+
+ij_kotlin_allow_trailing_comma = false
+ij_kotlin_allow_trailing_comma_on_call_site = false
 
 [*.md]
 trim_trailing_whitespace = false
