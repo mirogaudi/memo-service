@@ -21,7 +21,7 @@ ij_java_names_count_to_use_import_on_demand = 999
 ij_java_packages_to_use_import_on_demand = unset
 
 [*.{kt,kts}]
-ij_kotlin_imports_layout = *,javax.**,java.**,kotlin.**,^
+ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
 
 ij_kotlin_name_count_to_use_star_import = 999
 ij_kotlin_name_count_to_use_star_import_for_members = 999
