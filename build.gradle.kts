@@ -24,7 +24,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.7.1"
 
     id("org.owasp.dependencycheck") version "8.2.1"
-    id("com.github.ben-manes.versions") version "0.46.0"
+    id("com.github.ben-manes.versions") version "0.47.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
     id("com.bmuschko.docker-remote-api") version "9.3.1"
@@ -54,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.19.1")
+    implementation("org.flywaydb:flyway-core:9.19.3")
     runtimeOnly("com.h2database:h2")
 
     val springdocVersion = "2.1.0"
