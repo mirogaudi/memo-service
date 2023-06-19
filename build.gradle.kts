@@ -10,7 +10,7 @@ plugins {
     id("org.springframework.boot") version "3.1.0"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.8.21"
+    val kotlinVersion = "1.8.22"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -54,12 +54,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.19.3")
+    implementation("org.flywaydb:flyway-core:9.19.4")
     runtimeOnly("com.h2database:h2")
 
-    val springdocVersion = "2.1.0"
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion")
-    implementation("org.springdoc:springdoc-openapi-starter-common:$springdocVersion")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
