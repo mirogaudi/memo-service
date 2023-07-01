@@ -23,7 +23,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.7.1"
 
-    id("org.owasp.dependencycheck") version "8.2.1"
+    id("org.owasp.dependencycheck") version "8.3.1"
     id("com.github.ben-manes.versions") version "0.47.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
