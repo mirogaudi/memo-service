@@ -10,7 +10,7 @@ plugins {
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.8.22" // update as soon as detekt supports 1.8.22
+    val kotlinVersion = "1.8.21" // update as soon as detekt supports 1.8.22
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
