@@ -10,7 +10,7 @@ plugins {
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
 
-    val kotlinVersion = "1.8.21" // update as soon as detekt supports 1.8.22
+    val kotlinVersion = "1.8.22"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -115,6 +115,14 @@ tasks.withType<Detekt>().configureEach {
         sarif.required.set(false)
     }
 }
+project.afterEvaluate {
+    configurations["detekt"].resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin") {
+            // update to 1.8.22 as soon as supported
+            useVersion("1.8.21")
+        }
+    }
+}
 
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
@@ -151,10 +159,10 @@ tasks.jacocoTestReport {
     }
 }
 
-// Uncomment to use JaCoCo in Kover
-/*kover {
-    useJacoco()
-}*/
+kover {
+    // Uncomment to use JaCoCo
+    // useJacoco()
+}
 
 dependencyCheck {
     analyzers(
