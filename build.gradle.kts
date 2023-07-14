@@ -8,9 +8,9 @@ import java.util.Locale
 
 plugins {
     id("org.springframework.boot") version "3.1.1"
-    id("io.spring.dependency-management") version "1.1.0"
+    id("io.spring.dependency-management") version "1.1.1"
 
-    val kotlinVersion = "1.8.22"
+    val kotlinVersion = "1.9.0"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
@@ -18,7 +18,7 @@ plugins {
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "3.15.0"
-    id("io.gitlab.arturbosch.detekt").version("1.23.0")
+    id("io.gitlab.arturbosch.detekt") version "1.23.0"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.7.2"
@@ -54,7 +54,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:9.19.4")
+    implementation("org.flywaydb:flyway-core")
     runtimeOnly("com.h2database:h2")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
@@ -118,7 +118,7 @@ tasks.withType<Detekt>().configureEach {
 project.afterEvaluate {
     configurations["detekt"].resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            // update to 1.8.22 as soon as supported
+            // TODO update to 1.9.0 as soon as supported!
             useVersion("1.8.21")
         }
     }
