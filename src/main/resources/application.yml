@@ -36,7 +36,6 @@ logging:
     root: info
 
 springdoc:
-  enable-native-support: true
   show-actuator: true
   swagger-ui:
     display-request-duration: true
