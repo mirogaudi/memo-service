@@ -18,7 +18,7 @@ plugins {
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "3.15.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.1"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.7.3"
@@ -118,8 +118,7 @@ tasks.withType<Detekt>().configureEach {
 project.afterEvaluate {
     configurations["detekt"].resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            // TODO update to 1.9.0 as soon as supported!
-            useVersion("1.8.21")
+            useVersion("1.9.0")
         }
     }
 }
