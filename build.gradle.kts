@@ -8,7 +8,7 @@ import java.util.Locale
 
 plugins {
     id("org.springframework.boot") version "3.1.2"
-    id("io.spring.dependency-management") version "1.1.2"
+    id("io.spring.dependency-management") version "1.1.3"
 
     val kotlinVersion = "1.9.0"
     kotlin("jvm") version kotlinVersion
