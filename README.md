@@ -119,8 +119,8 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 $ ./gradlew generateOpenApiDocs
 ```
 
-Generated API docs file `$buildDir/docs/memo-service-openapi.json` can be viewed
-with [https://editor.swagger.io/](https://editor.swagger.io/)
+Generated API docs file `build/docs/memo-service-openapi.json` can be viewed
+with IntelliJ or [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ### View DB
 

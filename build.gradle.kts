@@ -7,7 +7,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.1.3"
+    id("org.springframework.boot") version "3.1.4"
     id("io.spring.dependency-management") version "1.1.3"
 
     val kotlinVersion = "1.9.10"
@@ -24,10 +24,10 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.7.3"
 
     id("org.owasp.dependencycheck") version "8.4.0"
-    id("com.github.ben-manes.versions") version "0.47.0"
+    id("com.github.ben-manes.versions") version "0.48.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.7.0"
-    id("com.bmuschko.docker-remote-api") version "9.3.2"
+    id("com.bmuschko.docker-remote-api") version "9.3.3"
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
@@ -66,7 +66,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("io.mockk:mockk:1.13.7")
+    testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
@@ -188,7 +188,7 @@ fun isNonStable(version: String): Boolean {
 
 openApi {
     apiDocsUrl.set("http://localhost:8080/ms/v3/api-docs")
-    outputDir.set(file("$buildDir/docs"))
+    outputDir.set(layout.buildDirectory.dir("docs"))
     outputFileName.set("memo-service-openapi.json")
 }
 
