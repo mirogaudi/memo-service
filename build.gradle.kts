@@ -41,8 +41,6 @@ repositories {
 
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
-    // uncomment to enable hibernate metamodel generator
-    // kapt("org.hibernate:hibernate-jpamodelgen")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
@@ -59,12 +57,16 @@ dependencies {
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
+    // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(group = "org.mockito", module = "mockito-core")
+        exclude(group = "org.mockito", module = "mockito-junit-jupiter")
     }
 
     testImplementation(kotlin("test"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
@@ -79,7 +81,7 @@ tasks.jar {
 }
 
 kotlin {
-    kotlinDaemonJvmArgs = listOf("-Xmx486m", "-Xms256m", "-XX:+UseParallelGC")
+    kotlinDaemonJvmArgs = listOf("-Xmx1024m", "-Xms256m", "-XX:+UseParallelGC")
 }
 
 tasks.withType<KaptWithoutKotlincTask>().configureEach {
