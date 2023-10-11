@@ -51,16 +51,13 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo text")
         @RequestParam
         text: String,
-
         @Parameter(description = "Memo priority")
         @RequestParam(required = false)
         priority: Priority?,
-
         @Parameter(description = "Memo due date")
         @RequestParam(required = false)
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         dueDate: LocalDateTime?,
-
         @Parameter(description = "Memo labels IDs")
         @RequestParam
         labelIds: Set<Long>?
@@ -73,20 +70,16 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo ID")
         @PathVariable
         id: Long,
-
         @Parameter(description = "Memo text")
         @RequestParam
         text: String,
-
         @Parameter(description = "Memo priority")
         @RequestParam(required = false)
         priority: Priority?,
-
         @Parameter(description = "Memo due date")
         @RequestParam(required = false)
         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
         dueDate: LocalDateTime?,
-
         @Parameter(description = "Memo labels IDs")
         @RequestParam
         labelIds: Set<Long>?

@@ -10,10 +10,25 @@ import java.time.LocalDateTime
 
 interface MemoService {
     fun getAll(): List<Memo>
+
     fun getById(id: Long): Memo
+
     fun deleteById(id: Long)
-    fun create(text: String, priority: Priority?, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
-    fun update(id: Long, text: String, priority: Priority?, dueDate: LocalDateTime?, labelIds: Set<Long>): Memo
+
+    fun create(
+        text: String,
+        priority: Priority?,
+        dueDate: LocalDateTime?,
+        labelIds: Set<Long>
+    ): Memo
+
+    fun update(
+        id: Long,
+        text: String,
+        priority: Priority?,
+        dueDate: LocalDateTime?,
+        labelIds: Set<Long>
+    ): Memo
 }
 
 @Service

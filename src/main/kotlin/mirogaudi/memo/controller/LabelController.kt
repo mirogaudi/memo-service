@@ -59,7 +59,6 @@ class LabelController(val labelService: LabelService) {
         @Parameter(description = "Label ID")
         @PathVariable
         id: Long,
-
         @Parameter(description = "Label")
         @RequestBody
         @Valid

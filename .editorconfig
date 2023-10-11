@@ -34,5 +34,10 @@ ij_java_packages_to_use_import_on_demand = unset
 ij_kotlin_allow_trailing_comma = false
 ij_kotlin_allow_trailing_comma_on_call_site = false
 
+# ktlint (in case changes do not take effect run `$ ./gradlew --stop`)
+ktlint_code_style = ktlint_official
+ktlint_standard = enabled
+ktlint_standard_no-empty-first-line-in-class-body = disabled
+
 [*.md]
 trim_trailing_whitespace = false

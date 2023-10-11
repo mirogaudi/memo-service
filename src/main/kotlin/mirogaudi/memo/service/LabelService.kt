@@ -7,10 +7,17 @@ import org.springframework.transaction.annotation.Transactional
 
 interface LabelService {
     fun getAll(): List<Label>
+
     fun getById(id: Long): Label
+
     fun deleteById(id: Long)
+
     fun create(label: Label): Label
-    fun update(id: Long, label: Label): Label
+
+    fun update(
+        id: Long,
+        label: Label
+    ): Label
 }
 
 @Service
@@ -45,7 +52,10 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
         )
     }
 
-    override fun update(id: Long, label: Label): Label {
+    override fun update(
+        id: Long,
+        label: Label
+    ): Label {
         return when {
             labelRepository.existsById(id) -> {
                 labelRepository.save(

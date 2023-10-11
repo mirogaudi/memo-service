@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Size
 import org.hibernate.Hibernate
 import java.util.Objects
 
+@Suppress("ktlint:standard:no-blank-line-in-list")
 @Entity
 @Table(name = "label")
 data class Label(
@@ -33,6 +34,7 @@ data class Label(
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "labels")
     @JsonIgnore
     var memos: MutableSet<Memo> = mutableSetOf()
+
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
