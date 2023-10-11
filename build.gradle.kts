@@ -21,10 +21,10 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.7.3"
+    id("org.jetbrains.kotlinx.kover") version "0.7.4"
 
     id("org.owasp.dependencycheck") version "8.4.0"
-    id("com.github.ben-manes.versions") version "0.48.0"
+    id("com.github.ben-manes.versions") version "0.49.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.7.0"
     id("com.bmuschko.docker-remote-api") version "9.3.4"
