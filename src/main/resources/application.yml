@@ -35,6 +35,12 @@ logging:
   level:
     root: info
 
+management:
+  server.port: 9000
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+  health.defaults.enabled: true
+
 springdoc:
   show-actuator: true
   swagger-ui:
