@@ -93,7 +93,7 @@ allOpen {
     annotations(
         "jakarta.persistence.Entity",
         "jakarta.persistence.Embeddable",
-        "jakarta.persistence.MappedSuperclass",
+        "jakarta.persistence.MappedSuperclass"
     )
 }
 
@@ -134,9 +134,7 @@ tasks.withType<KotlinCompile>().configureEach {
 
 tasks.withType<Test>().configureEach {
     // enables JUnit5
-    useJUnitPlatform {
-        excludeEngines("junit-vintage")
-    }
+    useJUnitPlatform()
 
     testLogging {
         events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.PASSED)
@@ -169,7 +167,7 @@ dependencyCheck {
     analyzers(
         closureOf<AnalyzerExtension> {
             assemblyEnabled = false
-        },
+        }
     )
 }
 
