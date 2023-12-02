@@ -7,7 +7,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 import java.util.Locale
 
 plugins {
-    id("org.springframework.boot") version "3.1.5"
+    id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.3"
 
     val kotlinVersion = "1.9.20"
