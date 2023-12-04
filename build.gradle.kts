@@ -27,7 +27,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.49.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
-    id("com.bmuschko.docker-remote-api") version "9.3.6"
+    id("com.bmuschko.docker-remote-api") version "9.4.0"
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
