@@ -1,8 +1,8 @@
-![Lines of code](https://img.shields.io/tokei/lines/github/mirogaudi/memo-service)
-![GitHub top language](https://img.shields.io/github/languages/top/mirogaudi/memo-service)
 ![GitHub gradle workflow status](https://img.shields.io/github/actions/workflow/status/mirogaudi/memo-service/gradle.yml?branch=main)
 ![JaCoCo coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/mirogaudi/memo-service/main/.github/badges/jacoco.json)
 ![JaCoCo branches](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/mirogaudi/memo-service/main/.github/badges/branches.json)
+![GitHub top language](https://img.shields.io/github/languages/top/mirogaudi/memo-service)
+![Lines of code](https://img.shields.io/tokei/lines/github/mirogaudi/memo-service)
 ![GitHub license](https://img.shields.io/github/license/mirogaudi/memo-service)
 
 # MEMO Service with REST API
