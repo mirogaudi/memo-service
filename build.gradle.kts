@@ -4,11 +4,10 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
-import java.util.Locale
 
 plugins {
     id("org.springframework.boot") version "3.2.0"
-    id("io.spring.dependency-management") version "1.1.3"
+    id("io.spring.dependency-management") version "1.1.4"
 
     val kotlinVersion = "1.9.21"
     kotlin("jvm") version kotlinVersion
@@ -17,14 +16,14 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jmailen.kotlinter") version "4.0.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.3"
+    id("org.jmailen.kotlinter") version "4.1.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.4"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.7.5"
 
-    id("org.owasp.dependencycheck") version "8.4.3"
-    id("com.github.ben-manes.versions") version "0.49.0"
+    id("org.owasp.dependencycheck") version "9.0.2"
+    id("com.github.ben-manes.versions") version "0.50.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
@@ -55,7 +54,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     runtimeOnly("com.h2database:h2")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
     // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -120,7 +119,7 @@ tasks.withType<Detekt>().configureEach {
 project.afterEvaluate {
     configurations["detekt"].resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            useVersion("1.9.10")
+            useVersion("1.9.21")
         }
     }
 }
@@ -180,7 +179,7 @@ tasks.dependencyUpdates {
     outputFormatter = "html,json"
 }
 fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase(Locale.getDefault()).contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
