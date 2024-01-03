@@ -2,44 +2,47 @@ server:
   port: 8080
   servlet.context-path: /ms
 
+management:
+  server.port: 9000
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+  health.defaults.enabled: true
+
+logging:
+  level:
+    root: info
+    org.springframework: error
+    mirogaudi.memo: info
+
 spring:
   application.name: memo-service
 
   jpa:
     generate-ddl: false
+
     hibernate.ddl-auto: none
 
-    # anti-pattern: enabled in demo purposes to allow lazy fetching during json mapping
-    # on prod: disable it and use DTOs
-    open-in-view: true
-
     properties:
-      hibernate.connection.provider_disables_autocommit: true
+      hibernate:
+        connection.provider_disables_autocommit: true
+
+    open-in-view: false
 
   flyway:
     locations: classpath:db/migration
 
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:ms
+    url: jdbc:h2:file:./build/db/ms;AUTO_SERVER=TRUE
     username: sa
     password: # empty
 
-    hikari.auto-commit: false
+    hikari:
+      auto-commit: false
 
   h2.console:
     enabled: true
     path: /h2-console
-
-logging:
-  level:
-    root: info
-
-management:
-  server.port: 9000
-  endpoints.web.exposure.include: "*"
-  endpoint.health.show-details: always
-  health.defaults.enabled: true
 
 springdoc:
   show-actuator: true
@@ -50,4 +53,5 @@ springdoc:
 
 # Memo service (ms)
 ms:
+  # Default memo priority
   memo-priority: SHORT_TERM

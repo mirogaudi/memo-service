@@ -1,11 +1,16 @@
+logging:
+  level:
+    root: info
+    org.springframework: error
+    mirogaudi.memo: info
+
 spring:
   jpa:
     generate-ddl: false
+
     hibernate.ddl-auto: validate
 
-    # anti-pattern: enabled in demo purposes to allow lazy fetching during json mapping
-    # on prod: disable it and use DTOs
-    open-in-view: true
+    open-in-view: false
 
   flyway:
     locations: classpath:db/migration
@@ -20,10 +25,11 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 0
 
-logging:
-  level:
-    root: info
+springdoc:
+  swagger-ui:
+    enabled: false
 
 # Memo service (ms)
 ms:
+  # Default memo priority
   memo-priority: SHORT_TERM

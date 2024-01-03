@@ -1,3 +1,3 @@
 package mirogaudi.memo.service
 
-class NotFoundException(override val message: String) : RuntimeException()
+class NotFoundException(override val message: String) : RuntimeException(message)

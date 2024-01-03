@@ -79,7 +79,7 @@ data class Memo(
 }
 
 enum class Priority {
-    LONG_TERM,
+    SHORT_TERM,
     MID_TERM,
-    SHORT_TERM
+    LONG_TERM
 }

@@ -53,8 +53,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core")
-    runtimeOnly("com.h2database:h2")
+    implementation("org.flywaydb:flyway-core:10.4.1")
+    runtimeOnly("com.h2database:h2:2.1.210") // TODO remove as soon as v2.2.224 or newer supported by IntelliJ
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 

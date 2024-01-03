@@ -68,7 +68,7 @@ class MemoServiceImpl(
         return memoRepository.save(
             Memo(
                 text = text,
-                priority = priority ?: memoServiceProperties.memoPriority ?: Priority.LONG_TERM,
+                priority = priority ?: memoServiceProperties.memoPriority ?: Priority.SHORT_TERM,
                 createdDate = LocalDateTime.now(),
                 dueDate = dueDate,
                 labels = labelIds.map { labelService.getById(it) }.toMutableSet()
