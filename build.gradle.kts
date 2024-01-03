@@ -30,9 +30,11 @@ plugins {
     id("org.barfuin.gradle.taskinfo") version "2.1.0"
 }
 
+val javaVersion = JavaVersion.VERSION_21
+
 group = "mirogaudi"
 version = "1.0.0"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = javaVersion
 
 repositories {
     mavenCentral()
@@ -106,7 +108,7 @@ detekt {
     ignoreFailures = true
 }
 tasks.withType<Detekt>().configureEach {
-    jvmTarget = JavaVersion.VERSION_17.toString()
+    jvmTarget = javaVersion.toString()
 
     reports {
         html.required.set(true)
@@ -127,7 +129,7 @@ project.afterEvaluate {
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = javaVersion.toString()
     }
 }
 
