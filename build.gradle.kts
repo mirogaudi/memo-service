@@ -6,17 +6,17 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "3.2.0"
+    id("org.springframework.boot") version "3.2.1"
     id("io.spring.dependency-management") version "1.1.4"
 
-    val kotlinVersion = "1.9.21"
+    val kotlinVersion = "1.9.22"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jmailen.kotlinter") version "4.1.0"
+    id("org.jmailen.kotlinter") version "4.1.1"
     id("io.gitlab.arturbosch.detekt") version "1.23.4"
 
     jacoco
