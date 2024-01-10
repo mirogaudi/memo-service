@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM bellsoft/liberica-openjdk-alpine:17
+FROM bellsoft/liberica-openjdk-alpine:21
 LABEL org.opencontainers.image.authors="mirogaudi" \
     org.opencontainers.image.url="https://github.com/mirogaudi/memo-service"
 VOLUME /tmp
