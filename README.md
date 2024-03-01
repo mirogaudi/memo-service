@@ -201,4 +201,4 @@ $ ./gradlew tiTree build
     - controllers
     - tests
 - add http client calls
-- add semantic releases
+- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/en/1.1.0/
