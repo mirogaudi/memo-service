@@ -53,7 +53,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:10.11.0")
+    implementation("org.flywaydb:flyway-core:10.12.0")
     runtimeOnly("com.h2database:h2")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
