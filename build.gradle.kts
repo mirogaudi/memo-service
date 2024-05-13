@@ -7,9 +7,9 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "3.2.5"
-    id("io.spring.dependency-management") version "1.1.4"
+    id("io.spring.dependency-management") version "1.1.5"
 
-    val kotlinVersion = "1.9.23"
+    val kotlinVersion = "1.9.24"
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
