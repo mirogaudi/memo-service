@@ -25,7 +25,7 @@ plugins {
     id("org.owasp.dependencycheck") version "9.2.0"
     id("com.github.ben-manes.versions") version "0.51.0"
 
-    id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
+    id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
