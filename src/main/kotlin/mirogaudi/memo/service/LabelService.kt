@@ -24,15 +24,11 @@ interface LabelService {
 @Transactional
 class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
 
-    override fun getAll(): List<Label> {
-        return labelRepository.findAll()
-            .sortedBy { it.name }
-    }
+    override fun getAll(): List<Label> = labelRepository.findAll()
+        .sortedBy { it.name }
 
-    override fun getById(id: Long): Label {
-        return labelRepository.findById(id)
-            .orElseThrow { labelNotFoundException(id) }
-    }
+    override fun getById(id: Long): Label = labelRepository.findById(id)
+        .orElseThrow { labelNotFoundException(id) }
 
     override fun deleteById(id: Long) {
         when {
@@ -44,31 +40,27 @@ class LabelServiceImpl(val labelRepository: LabelRepository) : LabelService {
         }
     }
 
-    override fun create(label: Label): Label {
-        return labelRepository.save(
-            Label(
-                name = label.name
-            )
+    override fun create(label: Label): Label = labelRepository.save(
+        Label(
+            name = label.name
         )
-    }
+    )
 
     override fun update(
         id: Long,
         label: Label
-    ): Label {
-        return when {
-            labelRepository.existsById(id) -> {
-                labelRepository.save(
-                    Label(
-                        id = id,
-                        name = label.name
-                    )
+    ): Label = when {
+        labelRepository.existsById(id) -> {
+            labelRepository.save(
+                Label(
+                    id = id,
+                    name = label.name
                 )
-            }
+            )
+        }
 
-            else -> {
-                throw labelNotFoundException(id)
-            }
+        else -> {
+            throw labelNotFoundException(id)
         }
     }
 

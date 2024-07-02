@@ -22,18 +22,14 @@ import org.springframework.web.bind.annotation.RestController
 class LabelController(val labelService: LabelService) {
 
     @GetMapping
-    fun getAll(): List<Label> {
-        return labelService.getAll()
-    }
+    fun getAll(): List<Label> = labelService.getAll()
 
     @GetMapping(value = ["/{id}"])
     fun getById(
         @Parameter(description = "Label ID")
         @PathVariable
         id: Long
-    ): Label {
-        return labelService.getById(id)
-    }
+    ): Label = labelService.getById(id)
 
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(
@@ -50,9 +46,7 @@ class LabelController(val labelService: LabelService) {
         @RequestBody
         @Valid
         label: Label
-    ): Label {
-        return labelService.create(label)
-    }
+    ): Label = labelService.create(label)
 
     @PutMapping(value = ["/{id}"])
     fun update(
@@ -63,9 +57,7 @@ class LabelController(val labelService: LabelService) {
         @RequestBody
         @Valid
         label: Label
-    ): Label {
-        return labelService.update(id, label)
-    }
+    ): Label = labelService.update(id, label)
 
     // TODO add tests
 }

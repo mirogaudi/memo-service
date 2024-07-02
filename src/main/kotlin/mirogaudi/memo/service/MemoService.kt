@@ -39,15 +39,11 @@ class MemoServiceImpl(
     val labelService: LabelService
 ) : MemoService {
 
-    override fun getAll(): List<Memo> {
-        return memoRepository.findAll()
-            .sortedBy { it.id }
-    }
+    override fun getAll(): List<Memo> = memoRepository.findAll()
+        .sortedBy { it.id }
 
-    override fun getById(id: Long): Memo {
-        return memoRepository.findById(id)
-            .orElseThrow { memoNotFoundException(id) }
-    }
+    override fun getById(id: Long): Memo = memoRepository.findById(id)
+        .orElseThrow { memoNotFoundException(id) }
 
     override fun deleteById(id: Long) {
         when {
@@ -64,17 +60,15 @@ class MemoServiceImpl(
         priority: Priority?,
         dueDate: LocalDateTime?,
         labelIds: Set<Long>
-    ): Memo {
-        return memoRepository.save(
-            Memo(
-                text = text,
-                priority = priority ?: memoServiceProperties.memoPriority ?: Priority.SHORT_TERM,
-                createdDate = LocalDateTime.now(),
-                dueDate = dueDate,
-                labels = labelIds.map { labelService.getById(it) }.toMutableSet()
-            )
+    ): Memo = memoRepository.save(
+        Memo(
+            text = text,
+            priority = priority ?: memoServiceProperties.memoPriority ?: Priority.SHORT_TERM,
+            createdDate = LocalDateTime.now(),
+            dueDate = dueDate,
+            labels = labelIds.map { labelService.getById(it) }.toMutableSet()
         )
-    }
+    )
 
     override fun update(
         id: Long,
@@ -82,24 +76,22 @@ class MemoServiceImpl(
         priority: Priority?,
         dueDate: LocalDateTime?,
         labelIds: Set<Long>
-    ): Memo {
-        return when {
-            memoRepository.existsById(id) -> {
-                memoRepository.save(
-                    Memo(
-                        id = id,
-                        text = text,
-                        priority = priority,
-                        createdDate = getById(id).createdDate,
-                        dueDate = dueDate,
-                        labels = labelIds.map { labelService.getById(it) }.toMutableSet()
-                    )
+    ): Memo = when {
+        memoRepository.existsById(id) -> {
+            memoRepository.save(
+                Memo(
+                    id = id,
+                    text = text,
+                    priority = priority,
+                    createdDate = getById(id).createdDate,
+                    dueDate = dueDate,
+                    labels = labelIds.map { labelService.getById(it) }.toMutableSet()
                 )
-            }
+            )
+        }
 
-            else -> {
-                throw memoNotFoundException(id)
-            }
+        else -> {
+            throw memoNotFoundException(id)
         }
     }
 

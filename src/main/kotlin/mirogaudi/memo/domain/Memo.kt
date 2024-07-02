@@ -56,10 +56,8 @@ data class Memo(
 
 ) {
     @JsonGetter
-    fun labelNames(): List<String> {
-        return labels.map { it.name }
-            .sorted()
-    }
+    fun labelNames(): List<String> = labels.map { it.name }
+        .sorted()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -72,10 +70,8 @@ data class Memo(
     override fun hashCode(): Int = javaClass.hashCode()
 
     @Override
-    override fun toString(): String {
-        return this::class.simpleName +
-            "(id = $id , text = $text , priority = $priority , createdDate = $createdDate , dueDate = $dueDate )"
-    }
+    override fun toString(): String = this::class.simpleName +
+        "(id = $id , text = $text , priority = $priority , createdDate = $createdDate , dueDate = $dueDate)"
 }
 
 enum class Priority {

@@ -21,41 +21,31 @@ class ControllerErrorHandler {
         MethodArgumentNotValidException::class,
         ConstraintViolationException::class
     )
-    fun requestErrorHandler(e: Exception): ResponseEntity<Error> {
-        return errorResponseEntity(HttpStatus.BAD_REQUEST, e)
-    }
+    fun requestErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(HttpStatus.BAD_REQUEST, e)
 
     @ExceptionHandler(NotFoundException::class)
-    fun notFoundErrorHandler(e: Exception): ResponseEntity<Error> {
-        return errorResponseEntity(HttpStatus.NOT_FOUND, e)
-    }
+    fun notFoundErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(HttpStatus.NOT_FOUND, e)
 
     @ExceptionHandler(
         ConcurrencyFailureException::class,
         DataIntegrityViolationException::class
     )
-    fun conflictErrorHandler(e: Exception): ResponseEntity<Error> {
-        return errorResponseEntity(HttpStatus.CONFLICT, e)
-    }
+    fun conflictErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(HttpStatus.CONFLICT, e)
 
     @ExceptionHandler(Throwable::class)
-    fun defaultErrorHandler(t: Throwable): ResponseEntity<Error> {
-        return errorResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, t)
-    }
+    fun defaultErrorHandler(t: Throwable): ResponseEntity<Error> = errorResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, t)
 
     private fun errorResponseEntity(
         status: HttpStatus,
         t: Throwable
-    ): ResponseEntity<Error> {
-        return ResponseEntity.status(status).body(
-            Error(
-                timestamp = LocalDateTime.now(),
-                status = status.value(),
-                error = status.reasonPhrase,
-                cause = t.toString()
-            )
+    ): ResponseEntity<Error> = ResponseEntity.status(status).body(
+        Error(
+            timestamp = LocalDateTime.now(),
+            status = status.value(),
+            error = status.reasonPhrase,
+            cause = t.toString()
         )
-    }
+    )
 }
 
 data class Error(

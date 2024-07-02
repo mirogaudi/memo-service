@@ -48,7 +48,6 @@ data class Label(
     override fun hashCode(): Int = Objects.hash(name)
 
     @Override
-    override fun toString(): String {
-        return this::class.simpleName + "(id = $id , name = $name )"
-    }
+    override fun toString(): String = this::class.simpleName +
+        "(id = $id , name = $name)"
 }

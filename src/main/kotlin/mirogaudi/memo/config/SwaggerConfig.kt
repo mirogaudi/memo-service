@@ -10,18 +10,16 @@ import org.springframework.context.annotation.Configuration
 class SwaggerConfig {
 
     @Bean
-    fun openAPI(): OpenAPI {
-        return OpenAPI()
-            .info(
-                Info()
-                    .title("Memo API")
-                    .description("Demo of memo service")
-                    .version("v1.0.0")
-            )
-            .externalDocs(
-                ExternalDocumentation()
-                    .description("Source code on GitHub")
-                    .url("https://github.com/mirogaudi/memo-service")
-            )
-    }
+    fun openAPI(): OpenAPI = OpenAPI()
+        .info(
+            Info()
+                .title("Memo API")
+                .description("Demo of memo service")
+                .version("v1.0.0")
+        )
+        .externalDocs(
+            ExternalDocumentation()
+                .description("Source code on GitHub")
+                .url("https://github.com/mirogaudi/memo-service")
+        )
 }

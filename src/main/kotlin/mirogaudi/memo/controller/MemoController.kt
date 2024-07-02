@@ -24,18 +24,14 @@ import java.time.LocalDateTime
 class MemoController(val memoService: MemoService) {
 
     @GetMapping
-    fun getAll(): List<Memo> {
-        return memoService.getAll()
-    }
+    fun getAll(): List<Memo> = memoService.getAll()
 
     @GetMapping(value = ["/{id}"])
     fun getById(
         @Parameter(description = "Memo ID")
         @PathVariable
         id: Long
-    ): Memo {
-        return memoService.getById(id)
-    }
+    ): Memo = memoService.getById(id)
 
     @DeleteMapping(value = ["/{id}"])
     fun deleteById(
@@ -61,9 +57,7 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo labels IDs")
         @RequestParam
         labelIds: Set<Long>?
-    ): Memo {
-        return memoService.create(text, priority, dueDate, labelIds ?: mutableSetOf())
-    }
+    ): Memo = memoService.create(text, priority, dueDate, labelIds ?: mutableSetOf())
 
     @PutMapping(value = ["/{id}"])
     fun update(
@@ -83,9 +77,7 @@ class MemoController(val memoService: MemoService) {
         @Parameter(description = "Memo labels IDs")
         @RequestParam
         labelIds: Set<Long>?
-    ): Memo {
-        return memoService.update(id, text, priority, dueDate, labelIds ?: mutableSetOf())
-    }
+    ): Memo = memoService.update(id, text, priority, dueDate, labelIds ?: mutableSetOf())
 
     // TODO add tests
 }
