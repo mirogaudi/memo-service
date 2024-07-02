@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
-    id("org.springframework.boot") version "3.3.0"
+    id("org.springframework.boot") version "3.3.1"
     id("io.spring.dependency-management") version "1.1.5"
 
     val kotlinVersion = "2.0.0"
@@ -20,12 +20,12 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.8.0"
+    id("org.jetbrains.kotlinx.kover") version "0.8.2"
 
     id("org.owasp.dependencycheck") version "9.2.0"
     id("com.github.ben-manes.versions") version "0.51.0"
 
-    id("org.springdoc.openapi-gradle-plugin") version "1.8.0"
+    id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
@@ -53,10 +53,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:10.14.0")
+    implementation("org.flywaydb:flyway-core:10.15.2")
     runtimeOnly("com.h2database:h2")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
 
     // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -66,8 +66,8 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.10.3")
 
     testImplementation("io.mockk:mockk:1.13.11")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
