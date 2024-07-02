@@ -1,6 +1,7 @@
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
@@ -30,11 +31,9 @@ plugins {
     id("org.barfuin.gradle.taskinfo") version "2.2.0"
 }
 
-val javaVersion = JavaVersion.VERSION_21
-
 group = "mirogaudi"
 version = "1.0.0"
-java.sourceCompatibility = javaVersion
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     mavenCentral()
@@ -108,8 +107,6 @@ detekt {
     ignoreFailures = true
 }
 tasks.withType<Detekt>().configureEach {
-    jvmTarget = javaVersion.toString()
-
     reports {
         html.required.set(true)
 
@@ -127,9 +124,9 @@ project.afterEvaluate {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = javaVersion.toString()
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+        freeCompilerArgs.add("-Xjsr305=strict")
     }
 }
 
@@ -194,6 +191,9 @@ openApi {
 }
 
 tasks.register<DockerBuildImage>("dockerBuildImage") {
+    description = "Builds project Docker image."
+    group = LifecycleBasePlugin.BUILD_GROUP
+
     dependsOn(tasks.bootJar)
 
     inputDir.set(file("${project.projectDir}"))
