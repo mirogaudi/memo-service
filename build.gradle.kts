@@ -8,7 +8,7 @@ import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "3.3.1"
-    id("io.spring.dependency-management") version "1.1.5"
+    id("io.spring.dependency-management") version "1.1.6"
 
     val kotlinVersion = "2.0.0"
     kotlin("jvm") version kotlinVersion
@@ -17,13 +17,13 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jmailen.kotlinter") version "4.4.0"
+    id("org.jmailen.kotlinter") version "4.4.1"
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.8.2"
 
-    id("org.owasp.dependencycheck") version "9.2.0"
+    id("org.owasp.dependencycheck") version "10.0.2"
     id("com.github.ben-manes.versions") version "0.51.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
