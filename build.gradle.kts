@@ -2,9 +2,7 @@ import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.owasp.dependencycheck.gradle.extension.AnalyzerExtension
 
 plugins {
     id("org.springframework.boot") version "3.3.3"
@@ -12,13 +10,12 @@ plugins {
 
     val kotlinVersion = "2.0.20"
     kotlin("jvm") version kotlinVersion
-    kotlin("kapt") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
     id("org.jmailen.kotlinter") version "4.4.1"
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
+    id("io.gitlab.arturbosch.detekt") version "1.23.7"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
@@ -40,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    kapt("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
@@ -52,7 +49,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:10.17.2")
+    implementation("org.flywaydb:flyway-core:10.18.0")
     runtimeOnly("com.h2database:h2:2.3.232")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
@@ -82,10 +79,6 @@ tasks.jar {
 
 kotlin {
     kotlinDaemonJvmArgs = listOf("-Xmx1024m", "-Xms256m", "-XX:+UseParallelGC")
-}
-
-tasks.withType<KaptWithoutKotlincTask>().configureEach {
-    kaptProcessJvmArgs.add("-Xmx256m")
 }
 
 // needed when using data classes for entities
@@ -118,7 +111,7 @@ tasks.withType<Detekt>().configureEach {
 project.afterEvaluate {
     configurations["detekt"].resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            useVersion("1.9.23")
+            useVersion("2.0.10")
         }
     }
 }
@@ -162,11 +155,9 @@ kover {
 }
 
 dependencyCheck {
-    analyzers(
-        closureOf<AnalyzerExtension> {
-            assemblyEnabled = false
-        }
-    )
+    analyzers {
+        assemblyEnabled = false
+    }
 }
 
 tasks.dependencyUpdates {
