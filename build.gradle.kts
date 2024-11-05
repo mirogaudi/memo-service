@@ -20,7 +20,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
 
-    id("org.owasp.dependencycheck") version "10.0.4"
+    id("org.owasp.dependencycheck") version "11.1.0"
     id("com.github.ben-manes.versions") version "0.51.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
@@ -63,7 +63,7 @@ dependencies {
     testImplementation(kotlin("test"))
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.3")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.3")
 
     testImplementation("io.mockk:mockk:1.13.13")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
