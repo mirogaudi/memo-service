@@ -6,6 +6,10 @@ import mirogaudi.memo.service.NotFoundException
 import org.springframework.dao.ConcurrencyFailureException
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatus.BAD_REQUEST
+import org.springframework.http.HttpStatus.CONFLICT
+import org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR
+import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -21,23 +25,19 @@ class ControllerErrorHandler {
         MethodArgumentNotValidException::class,
         ConstraintViolationException::class
     )
-    fun requestErrorHandler(e: Exception): ResponseEntity<Error> =
-        errorResponseEntity(HttpStatus.BAD_REQUEST, e)
+    fun requestErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(BAD_REQUEST, e)
 
     @ExceptionHandler(NotFoundException::class)
-    fun notFoundErrorHandler(e: Exception): ResponseEntity<Error> =
-        errorResponseEntity(HttpStatus.NOT_FOUND, e)
+    fun notFoundErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(NOT_FOUND, e)
 
     @ExceptionHandler(
         ConcurrencyFailureException::class,
         DataIntegrityViolationException::class
     )
-    fun conflictErrorHandler(e: Exception): ResponseEntity<Error> =
-        errorResponseEntity(HttpStatus.CONFLICT, e)
+    fun conflictErrorHandler(e: Exception): ResponseEntity<Error> = errorResponseEntity(CONFLICT, e)
 
     @ExceptionHandler(Throwable::class)
-    fun defaultErrorHandler(t: Throwable): ResponseEntity<Error> =
-        errorResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, t)
+    fun defaultErrorHandler(t: Throwable): ResponseEntity<Error> = errorResponseEntity(INTERNAL_SERVER_ERROR, t)
 
     private fun errorResponseEntity(
         status: HttpStatus,
