@@ -18,7 +18,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.8.3"
+    id("org.jetbrains.kotlinx.kover") version "0.9.0"
 
     id("org.owasp.dependencycheck") version "11.1.0"
     id("com.github.ben-manes.versions") version "0.51.0"
