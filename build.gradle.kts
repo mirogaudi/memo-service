@@ -5,22 +5,23 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.4.0"
-    id("io.spring.dependency-management") version "1.1.6"
+    id("org.springframework.boot") version "3.4.1"
+    id("io.spring.dependency-management") version "1.1.7"
 
-    val kotlinVersion = "2.0.21"
+    val kotlinVersion = "2.1.0"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.jmailen.kotlinter") version "4.5.0"
+    id("org.jmailen.kotlinter") version "5.0.1"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.8.3"
+    // Uncomment as soon as kover fixes gradle 8.12 support
+    // id("org.jetbrains.kotlinx.kover") version "0.9.0"
 
-    id("org.owasp.dependencycheck") version "11.1.0"
+    id("org.owasp.dependencycheck") version "11.1.1"
     id("com.github.ben-manes.versions") version "0.51.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
@@ -49,7 +50,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:11.0.0")
+    implementation("org.flywaydb:flyway-core:11.1.0")
     runtimeOnly("com.h2database:h2:2.3.232")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
@@ -62,10 +63,10 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.3")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.4")
 
-    testImplementation("io.mockk:mockk:1.13.13")
+    testImplementation("io.mockk:mockk:1.13.14")
     testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
@@ -81,7 +82,7 @@ kotlin {
     kotlinDaemonJvmArgs = listOf("-Xmx1024m", "-Xms256m", "-XX:+UseParallelGC")
 }
 
-// needed when using data classes for entities
+// Needed when using data classes for entities
 allOpen {
     annotations(
         "jakarta.persistence.Entity",
@@ -91,7 +92,7 @@ allOpen {
 }
 
 kotlinter {
-    ignoreFailures = false
+    ignoreLintFailures = false
     reporters = arrayOf("html", "json")
 }
 
@@ -124,7 +125,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 tasks.withType<Test>().configureEach {
-    // enables JUnit5
+    // Enables JUnit5
     useJUnitPlatform()
 
     testLogging {
@@ -145,14 +146,15 @@ tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
         html.required.set(true)
-        csv.required.set(true) // used by jacoco-badge-generator
+        csv.required.set(true) // Used by jacoco-badge-generator
     }
 }
 
-kover {
+// Uncomment as soon as kover fixes gradle 8.12 support
+/*kover {
     // Uncomment to use JaCoCo
     // useJacoco()
-}
+}*/
 
 dependencyCheck {
     analyzers {
