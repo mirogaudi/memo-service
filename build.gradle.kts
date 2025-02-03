@@ -18,10 +18,9 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
 
     jacoco
-    // Uncomment as soon as kover fixes gradle 8.12 support
-    // id("org.jetbrains.kotlinx.kover") version "0.9.0"
+    id("org.jetbrains.kotlinx.kover") version "0.9.1"
 
-    id("org.owasp.dependencycheck") version "11.1.1"
+    id("org.owasp.dependencycheck") version "12.0.2"
     id("com.github.ben-manes.versions") version "0.52.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
@@ -150,11 +149,10 @@ tasks.jacocoTestReport {
     }
 }
 
-// Uncomment as soon as kover fixes gradle 8.12 support
-/*kover {
+kover {
     // Uncomment to use JaCoCo
     // useJacoco()
-}*/
+}
 
 dependencyCheck {
     analyzers {
