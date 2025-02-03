@@ -22,7 +22,7 @@ plugins {
     // id("org.jetbrains.kotlinx.kover") version "0.9.0"
 
     id("org.owasp.dependencycheck") version "11.1.1"
-    id("com.github.ben-manes.versions") version "0.51.0"
+    id("com.github.ben-manes.versions") version "0.52.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("com.bmuschko.docker-remote-api") version "9.4.0"
