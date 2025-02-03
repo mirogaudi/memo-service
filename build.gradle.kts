@@ -53,7 +53,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:11.3.0")
     runtimeOnly("com.h2database:h2:2.3.232")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.4")
 
     // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
