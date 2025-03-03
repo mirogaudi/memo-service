@@ -137,7 +137,7 @@ tasks.withType<Test>().configureEach {
 }
 
 jacoco {
-    toolVersion = "0.8.10"
+    toolVersion = "0.8.12"
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
