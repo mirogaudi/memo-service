@@ -23,8 +23,8 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Build with Gradle wrapper generating JaCoCo report
-        run: ./gradlew build jacocoTestReport --continue --no-daemon
+      - name: Build with Gradle wrapper performing Detekt analysis and generating JaCoCo report
+        run: ./gradlew build detekt jacocoTestReport --continue --no-daemon
 
       - name: Generate JaCoCo badges
         uses: cicirello/jacoco-badge-generator@v2
