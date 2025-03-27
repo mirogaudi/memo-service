@@ -69,7 +69,7 @@ Application uses H2 DB.
 
 ### Configuration
 
-See configuration in `ms:` section of [application.yml](src/main/resources/application.yml)
+See application specific configuration in `ms:` section of [application.yml](src/main/resources/application.yml)
 
 ## Getting started
 
@@ -112,12 +112,17 @@ $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service
 
 - Or just run `MemoServiceApplication` in an IDE
 
-### View and try API
+### View and try Application API
 
 - OpenAPI docs: [http://localhost:8080/ms/v3/api-docs](http://localhost:8080/ms/v3/api-docs)
-- Actuator: [http://localhost:9000/actuator](http://localhost:9000/actuator)
 - Swagger UI: [http://localhost:8080/ms/swagger-ui/index.html](http://localhost:8080/ms/swagger-ui/index.html)
-- Swagger UI (x-actuator): [http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator](http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator)
+- HTTP client: [request-labels.http](http-requests/request-labels.http), [request-memos.http](http-requests/request-memos.http)
+
+#### Spring Boot Actuator
+
+- Actuator: [http://localhost:9000/actuator](http://localhost:9000/actuator)
+- Swagger UI: [http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator](http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator)
+- HTTP client: [request-actuator.http](http-requests/request-actuator.http)
 
 #### Generate API docs in a file
 
