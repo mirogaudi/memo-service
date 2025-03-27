@@ -4,7 +4,12 @@ server:
 
 management:
   server.port: 9000
-  endpoints.web.exposure.include: "*"
+  endpoints.web:
+    exposure.include: "*"
+    # allow to call actuator from Swagger UI running on a different (application) port
+    cors:
+      allowed-origins: http://localhost:${server.port}
+      allowed-methods: "*"
   endpoint.health.show-details: always
   health.defaults.enabled: true
 
