@@ -6,11 +6,9 @@ logging:
 
 spring:
   jpa:
-    generate-ddl: false
-
-    hibernate.ddl-auto: validate
-
     open-in-view: false
+    generate-ddl: false
+    hibernate.ddl-auto: validate
 
   flyway:
     locations: classpath:db/migration
@@ -20,7 +18,6 @@ spring:
     url: jdbc:h2:mem:ms-test
     username: sa
     password: # empty
-
     hikari:
       maximum-pool-size: 5
       minimum-idle: 0
