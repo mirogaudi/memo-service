@@ -4,6 +4,7 @@ import mirogaudi.memo.config.MemoServiceProperties
 import mirogaudi.memo.domain.Memo
 import mirogaudi.memo.domain.Priority
 import mirogaudi.memo.repository.MemoRepository
+import org.hibernate.Hibernate
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
@@ -39,11 +40,20 @@ class MemoServiceImpl(
     val labelService: LabelService
 ) : MemoService {
 
-    override fun getAll(): List<Memo> = memoRepository.findAll()
-        .sortedBy { it.id }
+    override fun getAll(): List<Memo> {
+        val memos = memoRepository.findAll()
+        // initialize lazy relations if spring.jpa.open-in-view=false
+        memos.forEach { Hibernate.initialize(it.labels) }
+        return memos
+        // .sortedBy { it.priority }
+    }
 
-    override fun getById(id: Long): Memo = memoRepository.findById(id)
-        .orElseThrow { memoNotFoundException(id) }
+    override fun getById(id: Long): Memo {
+        val memoOptional = memoRepository.findById(id)
+        // initialize lazy relations if spring.jpa.open-in-view=false
+        memoOptional.ifPresent { Hibernate.initialize(it.labels) }
+        return memoOptional.orElseThrow { memoNotFoundException(id) }
+    }
 
     override fun deleteById(id: Long) {
         when {
