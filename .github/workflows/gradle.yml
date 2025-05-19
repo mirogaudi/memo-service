@@ -3,6 +3,9 @@
 
 name: Java_CI_with_Gradle
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ main ]
