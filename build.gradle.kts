@@ -20,7 +20,7 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
 
-    id("org.owasp.dependencycheck") version "12.1.2"
+    id("org.owasp.dependencycheck") version "12.1.3"
     id("com.github.ben-manes.versions") version "0.52.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
