@@ -50,7 +50,7 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core:11.13.1")
-    runtimeOnly("com.h2database:h2:2.3.232")
+    runtimeOnly("com.h2database:h2:2.4.240")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.13")
 
