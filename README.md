@@ -13,7 +13,7 @@ Application is a demo of a simple memos (notes) service
 
 ### Used technologies
 
-- Kotlin (jvmTarget 21)
+- Kotlin (JavaLanguageVersion 21)
 - Gradle (wrapper)
 - Spring Boot
 - Spring Web MVC

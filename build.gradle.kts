@@ -4,18 +4,17 @@ import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.5.6"
-    id("io.spring.dependency-management") version "1.1.7"
-
     val kotlinVersion = "2.2.20"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
+
+    id("org.springframework.boot") version "3.5.6"
+    id("io.spring.dependency-management") version "1.1.7"
 
     id("org.jmailen.kotlinter") version "5.2.0"
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
@@ -33,7 +32,13 @@ plugins {
 
 group = "mirogaudi"
 version = "1.0.0"
-java.sourceCompatibility = JavaVersion.VERSION_21
+description = "Demo memos (notes) service"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 repositories {
     mavenCentral()
@@ -122,13 +127,12 @@ project.afterEvaluate {
 
 tasks.withType<KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xjsr305=strict")
     }
 }
 
 tasks.withType<Test>().configureEach {
-    // enables JUnit5
+    // enables JUnit
     useJUnitPlatform()
 
     testLogging {
