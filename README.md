@@ -89,28 +89,43 @@ $ ./gradlew clean build
 ### Docker build
 
 ```shell
-# Build and tag docker image with Docker (requires artifacts to be already built)
+# Build and tag Docker image with Docker
+# Firstly build artifact required by Docker with Gradle Wrapper
+$ ./gradlew build
+# Secondly build with Docker
 $ docker build -t mirogaudi/memo-service:1.0.0 .
 $ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
 
-# Build docker image with Gradle wrapper (via Docker plugin)
+# Or build Docker image with Gradle wrapper via Docker plugin
 $ ./gradlew dockerBuildImage
 ```
 
 ### Run
 
+#### Run with Java
+
 ```shell
 # Run with Java
 $ java -jar build/libs/memo-service-1.0.0.jar
+```
 
+#### Run with Gradle
+
+```shell
 # Run with Gradle wrapper (via Spring Boot plugin)
 $ ./gradlew bootRun
+```
 
+#### Run with Docker
+
+```shell
 # Run with Docker
 $ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service:latest
 ```
 
-- Or just run `MemoServiceApplication` in an IDE
+#### Run in IDE
+
+Just run in IDE: [MemoServiceApplication.kt](./src/main/kotlin/mirogaudi/memo/MemoServiceApplication.kt)
 
 ### View and try Application API
 
@@ -214,4 +229,4 @@ $ ./gradlew tiTree build
     - services
     - controllers
     - tests
-- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/en/1.1.0/
+- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/

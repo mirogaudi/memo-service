@@ -14,7 +14,7 @@ class SwaggerConfig {
         .info(
             Info()
                 .title("Memo API")
-                .description("Demo of memo service")
+                .description("Demo memos (notes) service")
                 .version("v1.0.0")
         )
         .externalDocs(

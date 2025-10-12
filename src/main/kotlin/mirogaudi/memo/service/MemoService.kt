@@ -45,7 +45,6 @@ class MemoServiceImpl(
         // initialize lazy relations if spring.jpa.open-in-view=false
         memos.forEach { Hibernate.initialize(it.labels) }
         return memos
-        // .sortedBy { it.priority }
     }
 
     override fun getById(id: Long): Memo {

@@ -1,6 +1,9 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -82,7 +85,7 @@ kotlin {
     kotlinDaemonJvmArgs = listOf("-Xmx1024m", "-Xms256m", "-XX:+UseParallelGC")
 }
 
-// Needed when using data classes for entities
+// needed when using data classes for entities
 allOpen {
     annotations(
         "jakarta.persistence.Entity",
@@ -125,7 +128,7 @@ tasks.withType<KotlinCompile>().configureEach {
 }
 
 tasks.withType<Test>().configureEach {
-    // Enables JUnit5
+    // enables JUnit5
     useJUnitPlatform()
 
     testLogging {
@@ -146,7 +149,7 @@ tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
         html.required.set(true)
-        csv.required.set(true) // Used by jacoco-badge-generator
+        csv.required.set(true) // used by jacoco-badge-generator
     }
 }
 
