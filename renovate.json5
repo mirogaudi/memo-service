@@ -6,5 +6,14 @@
     ":automergeMinor",
     ":automergePr",
     ":automergeRequireAllStatusChecks"
-  ]
+  ],
+  "schedule": [
+    // Weekly schedule on Fridays 00:00–07:59
+    "* 0-7 * * 5"
+  ],
+  automergeSchedule: [
+    // Weekly schedule on Fridays 08:00–11:59
+    "* 8-11 * * 5"
+  ],
+  "timezone": "Europe/Berlin"
 }
