@@ -14,7 +14,7 @@ Application is a demo of a simple memos (notes) service
 ### Used technologies
 
 - Kotlin (JavaLanguageVersion 21)
-- Gradle (wrapper)
+- Gradle 9 (wrapper)
 - Spring Boot
 - Spring Web MVC
 - Spring Data JPA
@@ -29,6 +29,7 @@ Application is a demo of a simple memos (notes) service
 - Detekt
 - JaCoCo
 - Kover (with IntelliJ coverage engine)
+- OWASP
 
 #### Misc
 
@@ -79,10 +80,10 @@ See application specific configuration in `ms:` section of [application.yml](src
 # Build with Gradle wrapper
 $ ./gradlew build
 
-# Build with Gradle wrapper continuing on task failures
+# Build continuing on task failures
 $ ./gradlew --continue build
 
-# Build with Gradle wrapper deleting the build directory 
+# Build deleting the build directory 
 $ ./gradlew clean build
 ```
 
@@ -139,7 +140,7 @@ Just run in IDE: [MemoServiceApplication.kt](./src/main/kotlin/mirogaudi/memo/Me
 - Swagger UI: [http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator](http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator)
 - HTTP client: [request-actuator.http](http-requests/request-actuator.http)
 
-#### Generate API docs in a file
+#### Generate API docs file
 
 ```shell
 # Build generating OpenAPI docs using springdoc-openapi Gradle plugin
@@ -163,27 +164,29 @@ with IntelliJ or [https://editor.swagger.io/](https://editor.swagger.io/)
 Code style is set using [.editorconfig](.editorconfig) file (refers to
 Ktlint [.editorconfig](https://github.com/pinterest/ktlint/blob/master/.editorconfig) file)
 
-### Linter
+#### Linter
 
 ```shell
-# Lint with Ktlint using Kotlinter Gradle plugin (check is also dependent on lintKotlin)
+# Build linting with Ktlint using Kotlinter Gradle plugin (`check` is also dependent on `lintKotlin`)
 $ ./gradlew lintKotlin
 ```
 
 ### Static code analysis
 
+#### Detekt
+
 ```shell
-# Check code using Detekt Gradle plugin (check is also dependent on detekt)
+# Build checking with Detekt using Detekt Gradle plugin (`check` is also dependent on `detekt`)
 $ ./gradlew detekt
 ```
 
 ### Code coverage
 
 ```shell
-# Run tests generating JaCoCo code coverage report using JaCoCo Gradle plugin
+# Build generating JaCoCo code coverage report using JaCoCo Gradle plugin
 $ ./gradlew jacocoTestReport
 
-# Run tests generating Kover code coverage HTML report using Kover Gradle plugin
+# Build generating Kover code coverage HTML report using Kover Gradle plugin
 $ ./gradlew koverHtmlReport
 ```
 
@@ -192,7 +195,7 @@ $ ./gradlew koverHtmlReport
 #### OWASP
 
 ```shell
-# Generate OWASP dependency vulnerability report using OWASP Gradle plugin
+# Build generating OWASP dependency vulnerability report using OWASP Gradle plugin
 $ ./gradlew dependencyCheckAnalyze
 ```
 
@@ -216,10 +219,10 @@ $ ./gradlew wrapper --gradle-version <version>
 # Show Gradle 'build' task dependencies order using Gradle wrapper dry run
 $ ./gradlew build --dry-run
 
-# Show Gradle 'build' task dependencies order using Gradle wrapper (via taskinfo plugin)
+# Show Gradle 'build' task dependencies order using Gradle taskinfo plugin
 $ ./gradlew tiOrder build
 
-# Show Gradle 'build' task dependencies tree using Gradle wrapper (via taskinfo plugin)
+# Show Gradle 'build' task dependencies tree using Gradle taskinfo plugin
 $ ./gradlew tiTree build
 ```
 
