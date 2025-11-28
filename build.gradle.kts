@@ -27,7 +27,7 @@ plugins {
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
-    id("org.barfuin.gradle.taskinfo") version "2.2.0"
+    id("org.barfuin.gradle.taskinfo") version "2.2.1"
 }
 
 group = "mirogaudi"
