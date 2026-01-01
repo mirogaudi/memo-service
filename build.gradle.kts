@@ -60,7 +60,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:11.20.0")
     runtimeOnly("com.h2database:h2:2.4.240")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.14")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.15")
 
     // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
