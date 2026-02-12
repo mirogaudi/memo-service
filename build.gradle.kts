@@ -13,14 +13,14 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.springframework.boot") version "3.5.9"
+    id("org.springframework.boot") version "3.5.10"
     id("io.spring.dependency-management") version "1.1.7"
 
-    id("org.jmailen.kotlinter") version "5.3.0"
+    id("org.jmailen.kotlinter") version "5.4.2"
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.9.5"
+    id("org.jetbrains.kotlinx.kover") version "0.9.7"
 
     id("org.owasp.dependencycheck") version "12.2.0"
     id("com.github.ben-manes.versions") version "0.53.0"
@@ -57,7 +57,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.flywaydb:flyway-core:11.20.1")
+    implementation("org.flywaydb:flyway-core:11.20.3")
     runtimeOnly("com.h2database:h2:2.4.240")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.15")
@@ -74,7 +74,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("io.mockk:mockk:1.14.7")
+    testImplementation("io.mockk:mockk:1.14.9")
     testImplementation("com.ninja-squad:springmockk:5.0.1")
 }
 
