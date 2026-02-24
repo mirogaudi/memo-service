@@ -239,7 +239,8 @@ $ ./gradlew tiTree build
     - check if all transactions are valid and using proxy classes
     - use logback
     - use Rest Assured for integration testing
-- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/
+- use conventional commits https://www.conventionalcommits.org/
+- add semantic releases (https://semver.org/) and/or CHANGELOG.md https://keepachangelog.com/
 - implement for Memo and Label:
     - services
     - controllers
