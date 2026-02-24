@@ -207,7 +207,7 @@ Dependencies are to be updated automatically with Renovate/Dependabot or could b
 
 ```shell
 # Check for dependency updates using Versions Gradle plugin
-$ ./gradlew dependencyUpdates
+$ ./gradlew dependencyUpdates --no-parallel
 
 # Update Gradle wrapper
 $ ./gradlew wrapper --gradle-version <version>
@@ -228,8 +228,19 @@ $ ./gradlew tiTree build
 
 ## TODO:
 
+- update:
+    - SB to v4
+    - flywaydb to v12
+    - springdoc-openapi to v3
+    - Java v25
+- clean up:
+    - use Flyway with maven plugin instead of dev app props
+    - test db with integration testing
+    - check if all transactions are valid and using proxy classes
+    - use logback
+    - use Rest Assured for integration testing
+- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/
 - implement for Memo and Label:
     - services
     - controllers
     - tests
-- add semantic releases and/or CHANGELOG.md https://keepachangelog.com/
