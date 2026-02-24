@@ -53,7 +53,7 @@ class ControllerErrorHandler {
 }
 
 data class Error(
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @param:JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
     val timestamp: LocalDateTime,
     val status: Int,
     val error: String,
