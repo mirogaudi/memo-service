@@ -13,9 +13,9 @@ Application is a demo of a simple memos (notes) service
 
 ### Used technologies
 
-- Kotlin (JavaLanguageVersion 21)
-- Gradle 9 (wrapper)
-- Spring Boot
+- Kotlin 2.3.x (JavaLanguageVersion 25)
+- Gradle 9.x (wrapper)
+- Spring Boot 4
 - Spring Web MVC
 - Spring Data JPA
 - Flyway DB migration tool
@@ -23,12 +23,12 @@ Application is a demo of a simple memos (notes) service
 - Docker
 - OpenAPI 3 & Swagger UI (springdoc-openapi)
 - JUnit Jupiter
-- MockK
-- Springmockk
+- MockK ???
+- Springmockk ???
 - Ktlint
 - Detekt
 - JaCoCo
-- Kover (with IntelliJ coverage engine)
+- Kover
 - OWASP
 
 #### Misc
@@ -62,7 +62,7 @@ Application DB stores labeled text memos:
 DB migration is done with Flyway using scripts:
 
 - [V1__create_schema.sql](src/main/resources/db/migration/V1__create_schema.sql)
-    - initial script `build/resources/main/db/create_schema.sql` is generated with Spring Data JPA when starting
+    - initial script `build/resources/main/db/generated_create_schema.sql` is generated with Spring Data JPA when starting
       application with `dev` profile (for details see [application-dev.yml](src/main/resources/application-dev.yml))
 - [V2__insert_data.sql](src/main/resources/db/migration/V2__insert_data.sql)
 
@@ -94,7 +94,7 @@ $ ./gradlew clean build
 # Firstly build artifact required by Docker with Gradle Wrapper
 $ ./gradlew build
 # Secondly build with Docker
-$ docker build -t mirogaudi/memo-service:1.0.0 .
+$ docker build --build-arg APP_VERSION=1.0.0 -t mirogaudi/memo-service:1.0.0 .
 $ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
 
 # Or build Docker image with Gradle wrapper via Docker plugin
@@ -115,13 +115,15 @@ $ java -jar build/libs/memo-service-1.0.0.jar
 ```shell
 # Run with Gradle wrapper (via Spring Boot plugin)
 $ ./gradlew bootRun
+# Run with 'dev' profile
+$ ./gradlew bootRun --args='--spring.profiles.active=dev'
 ```
 
 #### Run with Docker
 
 ```shell
 # Run with Docker
-$ docker run -it -d --rm --name memo-service -p 8080:8080 mirogaudi/memo-service:latest
+$ docker run -it -d --rm --name memo-service -p 8080:8080 -p 9000:9000 mirogaudi/memo-service:latest
 ```
 
 #### Run in IDE
@@ -139,16 +141,6 @@ Just run in IDE: [MemoServiceApplication.kt](./src/main/kotlin/mirogaudi/memo/Me
 - Actuator: [http://localhost:9000/actuator](http://localhost:9000/actuator)
 - Swagger UI: [http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator](http://localhost:8080/ms/swagger-ui/index.html?urls.primaryName=x-actuator)
 - HTTP client: [request-actuator.http](http-requests/request-actuator.http)
-
-#### Generate API docs file
-
-```shell
-# Build generating OpenAPI docs using springdoc-openapi Gradle plugin
-$ ./gradlew generateOpenApiDocs
-```
-
-Generated API docs file `build/docs/memo-service-openapi.json` can be viewed
-with IntelliJ or [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ### View DB
 
@@ -182,11 +174,19 @@ $ ./gradlew detekt
 
 ### Code coverage
 
+#### JaCoCo
+
 ```shell
 # Build generating JaCoCo code coverage report using JaCoCo Gradle plugin
 $ ./gradlew jacocoTestReport
+```
 
-# Build generating Kover code coverage HTML report using Kover Gradle plugin
+#### Kover
+
+```shell
+# Build generating JaCoCo-compatible XML Kover code coverage report using Kover Gradle plugin
+$ ./gradlew koverXmlReport
+# Build generating HTML Kover code coverage report using Kover Gradle plugin
 $ ./gradlew koverHtmlReport
 ```
 
@@ -219,22 +219,16 @@ $ ./gradlew wrapper --gradle-version <version>
 # Show Gradle 'build' task dependencies order using Gradle wrapper dry run
 $ ./gradlew build --dry-run
 
-# Show Gradle 'build' task dependencies order using Gradle taskinfo plugin
-$ ./gradlew tiOrder build
-
 # Show Gradle 'build' task dependencies tree using Gradle taskinfo plugin
 $ ./gradlew tiTree build
+
+# Show Gradle 'build' task dependencies order using Gradle taskinfo plugin
+$ ./gradlew tiOrder build
 ```
 
 ## TODO:
 
-- update:
-    - SB to v4
-    - flywaydb to v12
-    - springdoc-openapi to v3
-    - Java v25
 - clean up:
-    - use Flyway with maven plugin instead of dev app props
     - test db with integration testing
     - check if all transactions are valid and using proxy classes
     - use logback

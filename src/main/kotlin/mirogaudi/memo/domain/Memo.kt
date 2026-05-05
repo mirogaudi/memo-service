@@ -19,7 +19,6 @@ import jakarta.validation.constraints.Size
 import org.hibernate.Hibernate
 import java.time.LocalDateTime
 
-@Suppress("ktlint:standard:no-blank-line-in-list")
 @Entity
 @Table(name = "memo")
 data class Memo(

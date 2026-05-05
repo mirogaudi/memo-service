@@ -14,7 +14,6 @@ import jakarta.validation.constraints.Size
 import org.hibernate.Hibernate
 import java.util.Objects
 
-@Suppress("ktlint:standard:no-blank-line-in-list")
 @Entity
 @Table(name = "label")
 data class Label(

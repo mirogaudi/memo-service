@@ -1,14 +1,24 @@
+server:
+  port: 8080
+  servlet.context-path: /ms
+
+management:
+  enabled: false
+
 logging:
   level:
     root: info
-    org.springframework: error
+    org.springframework: warn
     mirogaudi.memo: info
 
 spring:
+  application.name: memo-service
   jpa:
     open-in-view: false
-    generate-ddl: false
     hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        connection.provider_disables_autocommit: true
 
   flyway:
     locations: classpath:db/migration
@@ -19,8 +29,10 @@ spring:
     username: sa
     password: # empty
     hikari:
-      maximum-pool-size: 5
-      minimum-idle: 0
+      auto-commit: false
+
+  h2.console:
+    enabled: false
 
 springdoc:
   swagger-ui:

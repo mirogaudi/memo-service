@@ -7,6 +7,5 @@ import org.springframework.boot.runApplication
 class MemoServiceApplication
 
 fun main(args: Array<String>) {
-    @Suppress("SpreadOperator")
     runApplication<MemoServiceApplication>(*args)
 }
