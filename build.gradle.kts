@@ -22,8 +22,8 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.8"
 
-    id("org.owasp.dependencycheck") version "12.2.1"
-    id("com.github.ben-manes.versions") version "0.53.0"
+    id("org.owasp.dependencycheck") version "12.2.2"
+    id("com.github.ben-manes.versions") version "0.54.0"
 
     id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
     id("com.bmuschko.docker-remote-api") version "10.0.0"
