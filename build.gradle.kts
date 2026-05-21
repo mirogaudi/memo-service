@@ -13,7 +13,7 @@ plugins {
     id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
 
-    id("org.jmailen.kotlinter") version "5.4.2"
+    id("org.jmailen.kotlinter") version "5.5.0"
     id("dev.detekt") version "2.0.0-alpha.3"
 
     jacoco
