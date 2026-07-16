@@ -1,11 +1,9 @@
 name: Delete old workflow runs (scheduled)
 on:
   schedule:
-    # Run monthly, on the 1st at 00:00 UTC.
-    - cron: '0 0 1 * *'
-
+    - cron: "0 0 1 * *" # Monthly at 00:00 on the 1st
 jobs:
-  del_runs:
+  delete-runs:
     runs-on: ubuntu-latest
     permissions:
       actions: write
