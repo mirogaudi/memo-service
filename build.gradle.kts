@@ -17,7 +17,7 @@ plugins {
     id("dev.detekt") version "2.0.0-alpha.3"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.9.8"
+    id("org.jetbrains.kotlinx.kover") version "0.9.9"
 
     id("org.owasp.dependencycheck") version "12.2.2"
     id("com.github.ben-manes.versions") version "0.54.0"
