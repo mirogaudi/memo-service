@@ -14,7 +14,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
 
     id("org.jmailen.kotlinter") version "5.6.0"
-    id("dev.detekt") version "2.0.0-alpha.3"
+    id("dev.detekt") version "2.0.0-alpha.5"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.9"
