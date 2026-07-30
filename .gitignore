@@ -9,5 +9,8 @@ out/
 .gradle
 build/
 
+### Logs ###
+logs/
+
 ### Other ###
 /.sdkmanrc

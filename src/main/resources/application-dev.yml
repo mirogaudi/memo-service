@@ -1,7 +1,8 @@
 logging:
   level:
     root: info
-    org.springframework: info
+    org.springframework: warn
+    org.hibernate: warn
     mirogaudi.memo: debug
 
 spring:

@@ -11,16 +11,21 @@ management:
       allowed-origins: http://localhost:${server.port}
       allowed-methods: "*"
   endpoint.health.show-details: always
-  health.defaults.enabled: true
+  health:
+    defaults.enabled: true
 
 logging:
+  file:
+    name: logs/application.log
   level:
     root: info
     org.springframework: warn
+    org.hibernate: warn
     mirogaudi.memo: info
 
 spring:
   application.name: memo-service
+
   jpa:
     open-in-view: false
     hibernate.ddl-auto: none
