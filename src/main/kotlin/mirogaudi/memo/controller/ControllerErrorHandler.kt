@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 @ControllerAdvice
 class ControllerErrorHandler {
@@ -44,7 +45,7 @@ class ControllerErrorHandler {
         t: Throwable
     ): ResponseEntity<Error> = ResponseEntity.status(status).body(
         Error(
-            timestamp = LocalDateTime.now(),
+            timestamp = LocalDateTime.now(ZoneId.systemDefault()),
             status = status.value(),
             error = status.reasonPhrase,
             cause = t.toString()
