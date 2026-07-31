@@ -4,10 +4,12 @@ import io.swagger.v3.oas.models.OpenAPI
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.ApplicationContext
+import org.springframework.test.context.ActiveProfiles
 import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 @SpringBootTest
+@ActiveProfiles("test")
 internal class MemoServiceApplicationIntegrationTest {
 
     @Autowired
