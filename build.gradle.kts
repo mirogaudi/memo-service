@@ -4,7 +4,7 @@ import dev.detekt.gradle.Detekt
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    val kotlinVersion = "2.3.21"
+    val kotlinVersion = "2.4.10"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
@@ -14,13 +14,13 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
 
     id("org.jmailen.kotlinter") version "5.6.0"
-    id("dev.detekt") version "2.0.0-alpha.3"
+    id("dev.detekt") version "2.0.0-alpha.5"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.9"
 
     id("org.owasp.dependencycheck") version "12.2.2"
-    id("com.github.ben-manes.versions") version "0.57.0"
+    id("io.github.ben-manes.versions") version "0.57.0"
 
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 
@@ -29,12 +29,6 @@ plugins {
 
 group = "mirogaudi"
 version = "1.0.0"
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
-}
 
 repositories {
     mavenCentral()
@@ -62,14 +56,15 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // TODO check/remove
-    // testImplementation("io.mockk:mockk:1.14.9")
-    // testImplementation("com.ninja-squad:springmockk:5.0.1")
+    testImplementation("io.mockk:mockk:1.14.9")
+    testImplementation("com.ninja-squad:springmockk:5.0.1")
 }
 
 kotlin {
+    jvmToolchain(25)
+
     compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+        freeCompilerArgs.addAll("-Xjsr305=strict")
     }
 }
 
@@ -80,7 +75,7 @@ allOpen {
     annotation("jakarta.persistence.Embeddable")
 }
 
-tasks.withType<Test> {
+tasks.test {
     useJUnitPlatform()
 
     testLogging {
@@ -104,6 +99,9 @@ detekt {
     ignoreFailures = false
 }
 tasks.withType<Detekt>().configureEach {
+    // FIXME enable as soon as kotlin v2.4.10 supported
+    enabled = false
+
     jvmTarget = "1.8"
 
     reports {
@@ -127,18 +125,17 @@ tasks.jacocoTestReport {
     }
 }
 
-tasks.withType<DependencyUpdatesTask> {
+tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
     revision = "release"
-    rejectVersionIf {
-        isNonStable(candidate.version)
-    }
-
     outputFormatter = "html,json"
+    rejectVersionIf {
+        candidate.version.isNonStable() && !currentVersion.isNonStable()
+    }
 }
-fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+fun String.isNonStable(): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
+    val isStable = stableKeyword || regex.matches(this)
     return isStable.not()
 }
 
