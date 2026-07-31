@@ -1,7 +1,3 @@
-server:
-  port: 8080
-  servlet.context-path: /ms
-
 management:
   enabled: false
 
@@ -9,27 +5,18 @@ logging:
   level:
     root: info
     org.springframework: warn
+    org.hibernate: info
     mirogaudi.memo: info
 
 spring:
-  application.name: memo-service
   jpa:
-    open-in-view: false
     hibernate.ddl-auto: validate
-    properties:
-      hibernate:
-        connection.provider_disables_autocommit: true
-
-  flyway:
-    locations: classpath:db/migration
 
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:ms-test
     username: sa
     password: # empty
-    hikari:
-      auto-commit: false
 
   h2.console:
     enabled: false
@@ -37,8 +24,3 @@ spring:
 springdoc:
   swagger-ui:
     enabled: false
-
-# Memo service (ms)
-ms:
-  # Default memo priority
-  memo-priority: SHORT_TERM
