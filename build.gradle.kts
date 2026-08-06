@@ -47,7 +47,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-h2console")
     runtimeOnly("com.h2database:h2")
 
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.3")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0")
 
     // Test dependencies
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
