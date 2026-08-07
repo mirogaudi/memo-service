@@ -19,8 +19,8 @@ plugins {
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.9"
 
-    id("org.owasp.dependencycheck") version "12.2.2"
-    id("io.github.ben-manes.versions") version "0.57.0"
+    id("org.owasp.dependencycheck") version "13.0.0"
+    id("io.github.ben-manes.versions") version "0.60.0"
 
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 
