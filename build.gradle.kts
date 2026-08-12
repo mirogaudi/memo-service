@@ -13,14 +13,14 @@ plugins {
     id("org.springframework.boot") version "4.1.0"
     id("io.spring.dependency-management") version "1.1.7"
 
-    id("org.jmailen.kotlinter") version "5.6.0"
+    id("org.jmailen.kotlinter") version "5.7.0"
     id("dev.detekt") version "2.0.0-alpha.6"
 
     jacoco
     id("org.jetbrains.kotlinx.kover") version "0.9.9"
 
     id("org.owasp.dependencycheck") version "13.0.0"
-    id("io.github.ben-manes.versions") version "0.60.0"
+    id("io.github.ben-manes.versions") version "0.61.0"
 
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 
