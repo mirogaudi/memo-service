@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:25.0.3_9-jdk
+FROM eclipse-temurin:25.0.4_7-jdk
 ARG APP_VERSION
 
 LABEL org.opencontainers.image.authors="mirogaudi" \
