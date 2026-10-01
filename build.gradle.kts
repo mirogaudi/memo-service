@@ -17,7 +17,7 @@ plugins {
     id("dev.detekt") version "2.0.0-alpha.6"
 
     jacoco
-    id("org.jetbrains.kotlinx.kover") version "0.9.9"
+    id("org.jetbrains.kotlinx.kover") version "0.9.10"
 
     id("org.owasp.dependencycheck") version "13.0.0"
     id("io.github.ben-manes.versions") version "0.64.0"
@@ -94,12 +94,21 @@ kotlinter {
     reporters = arrayOf("checkstyle")
 }
 
+// FIXME comment out as soon as kotlin v2.4.20 supported
+configurations.named("ktlint") {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin" && requested.name == "kotlin-compiler-embeddable") {
+            useVersion("2.4.10")
+        }
+    }
+}
+
 detekt {
     buildUponDefaultConfig = true
     ignoreFailures = false
 }
 tasks.withType<Detekt>().configureEach {
-    // FIXME enable as soon as kotlin v2.4.10 supported
+    // FIXME enable as soon as kotlin v2.4.20 supported
     enabled = false
 
     jvmTarget = "1.8"
