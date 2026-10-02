@@ -233,8 +233,6 @@ $ ./gradlew tiOrder build
     - use BaseEntity
     - rework application settings, so application-test.yml only overrides application.yml
     - use lightweight alternative to eclipse-temurin:25.0.3_9-jdk
-- use conventional commits https://www.conventionalcommits.org/
-- add semantic releases (https://semver.org/) and/or CHANGELOG.md https://keepachangelog.com/
 - implement for Memo and Label:
     - services
     - controllers
