@@ -6,16 +6,25 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
     rebase-strategy: "disabled"
 
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "monthly"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
     rebase-strategy: "disabled"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
     rebase-strategy: "disabled"
