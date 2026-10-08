@@ -7,6 +7,12 @@
     ":automergePr",
     ":automergeRequireAllStatusChecks"
   ],
+  "rebaseWhen": "behind-base-branch",
+  "platformAutomerge": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "schedule": ["at any time"]
+  },
   "schedule": [
     // Weekly schedule on Thursdays 00:00–07:59
     "* 0-7 * * 4"
