@@ -20,7 +20,7 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.9.10"
 
     id("org.owasp.dependencycheck") version "13.0.0"
-    id("io.github.ben-manes.versions") version "0.64.0"
+    id("io.github.ben-manes.versions") version "0.65.0"
 
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 
