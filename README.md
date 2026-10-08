@@ -90,8 +90,10 @@ $ ./gradlew clean build
 # Firstly build artifact required by Docker with Gradle Wrapper
 $ ./gradlew build
 # Secondly build with Docker
-$ docker build --build-arg APP_VERSION=1.0.0 -t mirogaudi/memo-service:1.0.0 .
-$ docker tag mirogaudi/memo-service:1.0.0 mirogaudi/memo-service:latest
+$ docker build --build-arg APP_VERSION=1.0.0 \
+  -t mirogaudi/memo-service:1.0.0 \
+  -t mirogaudi/memo-service:latest \
+  .
 
 # Or build Docker image with Gradle wrapper via Docker plugin
 $ ./gradlew dockerBuildImage
@@ -119,7 +121,7 @@ $ ./gradlew bootRun --args='--spring.profiles.active=dev'
 
 ```shell
 # Run with Docker
-$ docker run -it -d --rm --name memo-service -p 8080:8080 -p 9000:9000 mirogaudi/memo-service:latest
+$ docker run -it --rm --name memo-service -p 8080:8080 -p 9000:9000 mirogaudi/memo-service:latest
 ```
 
 #### Run in IDE
@@ -224,16 +226,16 @@ $ ./gradlew tiOrder build
 ## TODO:
 
 - clean up:
-    - test db with integration testing
-    - check if all transactions are valid and using proxy classes
     - use Rest Assured for integration testing
+    - use BaseEntity
     - add @MappedSuperclass
     - regenerate @equals & @hashcode
     - do not use data classes
-    - use BaseEntity
-    - rework application settings, so application-test.yml only overrides application.yml
-    - use lightweight alternative to eclipse-temurin:25.0.3_9-jdk
+    - test/fix n+1 JPA problem
+    - test db with integration testing
+    - check if all transactions are valid and using proxy classes
 - implement for Memo and Label:
+    - add PATCH call
     - services
     - controllers
     - tests
