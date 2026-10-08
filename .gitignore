@@ -1,16 +1,5 @@
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-
-### Gradle ###
-.gradle
-build/
-
-### Logs ###
+.idea/
+db/
 logs/
-
-### Other ###
-/.sdkmanrc
+.gradle/
+build/
