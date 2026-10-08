@@ -6,8 +6,16 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    ignore:
-      - dependency-name: "*"
-        update-types: [ "version-update:semver-major" ]
-    open-pull-requests-limit: 10
+    rebase-strategy: "disabled"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    rebase-strategy: "disabled"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
     rebase-strategy: "disabled"
