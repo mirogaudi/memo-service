@@ -24,7 +24,7 @@ plugins {
 
     id("com.bmuschko.docker-remote-api") version "10.0.0"
 
-    id("org.barfuin.gradle.taskinfo") version "3.0.2"
+    id("org.barfuin.gradle.taskinfo") version "3.1.0"
 }
 
 group = "mirogaudi"
