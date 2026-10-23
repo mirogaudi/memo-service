@@ -72,31 +72,45 @@ See application specific configuration in `ms:` section of [application.yml](src
 
 ### Gradle build
 
+Build with Gradle (wrapper):
+
 ```shell
-# Build with Gradle wrapper
-$ ./gradlew build
+./gradlew build
+```
 
-# Build continuing on task failures
-$ ./gradlew --continue build
+Build continuing on task failures:
 
-# Build deleting the build directory 
-$ ./gradlew clean build
+```shell
+./gradlew --continue build
+```
+
+Build deleting the build directory:
+
+```shell
+./gradlew clean build
 ```
 
 ### Docker build
 
+To build and tag a Docker image, first build the artifact with Gradle:
+
 ```shell
-# Build and tag Docker image with Docker
-# Firstly build artifact required by Docker with Gradle Wrapper
-$ ./gradlew build
-# Secondly build with Docker
-$ docker build --build-arg APP_VERSION=1.0.0 \
+./gradlew build
+```
+
+Then build and tag the image with Docker:
+
+```shell
+docker build --build-arg APP_VERSION=1.0.0 \
   -t mirogaudi/memo-service:1.0.0 \
   -t mirogaudi/memo-service:latest \
   .
+```
 
-# Or build Docker image with Gradle wrapper via Docker plugin
-$ ./gradlew dockerBuildImage
+Or build and tag a Docker image directly with Gradle via the Docker plugin:
+
+```shell
+./gradlew dockerBuildImage
 ```
 
 ### Run
@@ -104,24 +118,27 @@ $ ./gradlew dockerBuildImage
 #### Run with Java
 
 ```shell
-# Run with Java
-$ java -jar build/libs/memo-service-1.0.0.jar
+java -jar build/libs/memo-service-1.0.0.jar
 ```
 
 #### Run with Gradle
 
+Run with Gradle via Spring Boot plugin:
+
 ```shell
-# Run with Gradle wrapper (via Spring Boot plugin)
-$ ./gradlew bootRun
-# Run with 'dev' profile
-$ ./gradlew bootRun --args='--spring.profiles.active=dev'
+./gradlew bootRun
+```
+
+With `dev` profile:
+
+```shell
+./gradlew bootRun --args='--spring.profiles.active=dev'
 ```
 
 #### Run with Docker
 
 ```shell
-# Run with Docker
-$ docker run -it --rm --name memo-service -p 8080:8080 -p 9000:9000 mirogaudi/memo-service:latest
+docker run -it --rm --name memo-service -p 8080:8080 -p 9000:9000 mirogaudi/memo-service:latest
 ```
 
 #### Run in IDE
@@ -155,45 +172,56 @@ Code style is set using [.editorconfig](.editorconfig) file (refers to Ktlint [.
 
 #### Linter
 
+Build with Gradle, linting with Ktlint using Kotlinter Gradle plugin (`check` task is also dependent on `lintKotlin`):
+
 ```shell
-# Build linting with Ktlint using Kotlinter Gradle plugin (`check` is also dependent on `lintKotlin`)
-$ ./gradlew lintKotlin
+./gradlew lintKotlin
 ```
 
 ### Static code analysis
 
 #### Detekt
 
+Build with Gradle, checking with Detekt using Detekt Gradle plugin (`check` task is also dependent on `detekt`):
+
 ```shell
-# Build checking with Detekt using Detekt Gradle plugin (`check` is also dependent on `detekt`)
-$ ./gradlew detekt
+./gradlew detekt
 ```
 
 ### Code coverage
 
 #### JaCoCo
 
+Build with Gradle, generating JaCoCo code coverage report using JaCoCo Gradle plugin:
+
 ```shell
-# Build generating JaCoCo code coverage report using JaCoCo Gradle plugin
-$ ./gradlew jacocoTestReport
+./gradlew jacocoTestReport
 ```
 
 #### Kover
 
+Build with Gradle, generating Kover code coverage report using Kover Gradle plugin:
+
+XML report (JaCoCo-compatible):
+
 ```shell
-# Build generating JaCoCo-compatible XML Kover code coverage report using Kover Gradle plugin
-$ ./gradlew koverXmlReport
-# Build generating HTML Kover code coverage report using Kover Gradle plugin
-$ ./gradlew koverHtmlReport
+./gradlew koverXmlReport
+```
+
+HTML report:
+
+```shell
+./gradlew koverHtmlReport
 ```
 
 ### Dependencies vulnerabilities
 
 #### OWASP
 
+Build with Gradle, generating OWASP dependency vulnerability report using OWASP Gradle plugin:
+
 ```shell
-# Build generating OWASP dependency vulnerability report using OWASP Gradle plugin
-$ ./gradlew dependencyCheckAnalyze
+./gradlew dependencyCheckAnalyze
 ```
 
 ## Maintenance
@@ -202,25 +230,40 @@ $ ./gradlew dependencyCheckAnalyze
 
 Dependencies are to be updated automatically with Renovate/Dependabot or could be updated manually:
 
-```shell
-# Check for dependency updates using Versions Gradle plugin
-$ ./gradlew dependencyUpdates --no-parallel
+#### Update Gradle wrapper:
 
-# Update Gradle wrapper
-$ ./gradlew wrapper --gradle-version <version>
+Replace `9.8.2` with the desired Gradle version.
+
+```shell
+./gradlew wrapper --gradle-version 9.8.2
+```
+
+#### Check for dependency updates
+
+Check for dependency updates with Ben Manes Versions Gradle plugin
+
+```shell
+./gradlew dependencyUpdates --no-parallel
 ```
 
 ### Check Gradle task dependencies
 
+Show Gradle `build` task dependencies order using Gradle dry run:
+
 ```shell
-# Show Gradle 'build' task dependencies order using Gradle wrapper dry run
-$ ./gradlew build --dry-run
+./gradlew build --dry-run
+```
 
-# Show Gradle 'build' task dependencies tree using Gradle taskinfo plugin
-$ ./gradlew tiTree build
+Show Gradle `build` task dependencies order using Gradle taskinfo plugin:
 
-# Show Gradle 'build' task dependencies order using Gradle taskinfo plugin
-$ ./gradlew tiOrder build
+```shell
+./gradlew tiOrder build
+```
+
+Task dependencies tree:
+
+```shell
+./gradlew tiTree build
 ```
 
 ## TODO:
