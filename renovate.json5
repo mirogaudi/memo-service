@@ -14,12 +14,12 @@
     "schedule": ["at any time"]
   },
   "schedule": [
-    // Weekly schedule on Thursdays 00:00–07:59
-    "* 0-7 * * 4"
+    // Weekly schedule on Wednesdays 00:00–07:59
+    "* 0-7 * * 3"
   ],
   automergeSchedule: [
-    // Weekly schedule on Thursdays 08:00–15:59
-    "* 8-15 * * 4"
+    // Weekly schedule on Thursdays 00:00–07:59
+    "* 0-7 * * 4"
   ],
   "timezone": "Europe/Berlin"
 }
