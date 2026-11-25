@@ -10,7 +10,7 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.allopen") version kotlinVersion
 
-    id("org.springframework.boot") version "4.1.2"
+    id("org.springframework.boot") version "4.2.0"
     id("io.spring.dependency-management") version "1.1.7"
 
     id("org.jmailen.kotlinter") version "5.7.0"
